@@ -1,0 +1,50 @@
+name: Build Fix Finans APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository'yi al
+        uses: actions/checkout@v4
+
+      - name: Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Android SDK 35
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Gradle 8.7
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
+
+      - name: ZIP'i aç
+        run: |
+          mkdir -p source
+          unzip -q Fix-Finans-13.1.7-GITHUB-READY.zip -d source
+
+      - name: APK derle
+        working-directory: source
+        run: |
+          gradle --no-daemon :app:assembleDebug
+
+      - name: APK adını düzelt
+        run: |
+          cp source/app/build/outputs/apk/debug/app-debug.apk \
+             Fix-Finans-13.1.7.apk
+
+      - name: APK'yı yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: Fix-Finans-13.1.7
+          path: Fix-Finans-13.1.7.apk
