@@ -21,22 +21,25 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Android SDK 35
-        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+        run: |
+          sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
       - name: Gradle 8.7
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.7'
 
-      - name: ZIP'i aç
+      - name: ZIP'i bul ve aç
         run: |
+          ZIP_FILE=$(find . -maxdepth 1 -type f -name 'Fix-Finans-13.1.7-GITHUB-READY*.zip' | head -n 1)
+          echo "Bulunan ZIP: $ZIP_FILE"
+          test -n "$ZIP_FILE"
           mkdir -p source
-          unzip -q Fix-Finans-13.1.7-GITHUB-READY.zip -d source
+          unzip -q "$ZIP_FILE" -d source
 
       - name: APK derle
-        working-directory: source
         run: |
-          gradle --no-daemon :app:assembleDebug
+          gradle --no-daemon -p source :app:assembleDebug
 
       - name: APK adını düzelt
         run: |
