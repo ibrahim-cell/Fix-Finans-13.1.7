@@ -1,0 +1,22 @@
+FIX FINANS 13.1.7 — GITHUB APK BUILD
+
+Bu paket GitHub Actions ile gerçek Android APK derlemek üzere hazırlanmıştır.
+
+Workflow:
+.github/workflows/build-apk.yml
+
+Derleme:
+gradle -p android-app --no-daemon clean assembleDebug
+
+Çıktı:
+Fix-Finans-13.1.7.apk
+
+Android:
+applicationId: com.fixfinans.app
+versionCode: 1317
+versionName: 13.1.7
+compileSdk: 35
+targetSdk: 35
+Gradle: 8.7
+Android Gradle Plugin: 8.6.1
+Java: 17
