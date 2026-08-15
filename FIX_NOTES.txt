@@ -1,0 +1,27 @@
+FIX 13.2 -> Karşılama (Splash) Ekranı Düzeltmesi (2. tur)
+===========================================================
+
+1) İlk düzeltme: splash-brand.png dış dosya olarak referans veriliyordu,
+   bu yüzden bazı ortamlarda (content://, tek başına index.html açılışı)
+   logo görseli yüklenmiyordu. Görsel base64 olarak index.html içine
+   gömüldü, artık dış dosya bağımlılığı yok.
+
+2) İkinci düzeltme (bu paket): Kullanıcı splash ekranındaki logonun
+   "kare rozet" (kare arka plan + neon çerçeve + FIX FİNANS yazısı)
+   olarak görünmesini istemedi; zaten animasyonlu arka plan (yörünge
+   halkaları, uçuşan para/kripto simgeleri, parıltı) olduğu için kare
+   kutu görsel olarak çakışıyordu. Bu yüzden:
+   - Orijinal logodan SADECE "F" harfi/işareti, arka planı ve çerçevesi
+     olmadan, şeffaf (transparent) PNG olarak yeniden kesildi
+     (f-mark.png / index.html içine base64 gömülü).
+   - .ff-splash-brand ve .ff-splash-brand img CSS kuralları güncellendi:
+     kare border-radius ve kutu box-shadow kaldırıldı, F'nin gerçek
+     en-boy oranına göre boyutlandırıldı, arka plandaki mor/mavi ışıkla
+     uyumlu yumuşak bir drop-shadow (glow) eklendi.
+   Sonuç: Splash ekranında artık sadece F logosu, animasyonlu arka planın
+   İÇİNDE, tek bir bütün sahne gibi görünüyor; ayrı bir kutu/kart hissi yok.
+
+Değişen/eklenen dosyalar:
+- index.html (splash CSS + gömülü görsel güncellendi)
+- f-mark.png (yeni: sadece F işareti, şeffaf arka plan — kaynak/yedek olarak bırakıldı)
+- splash-brand.png (eski kare logo, artık kullanılmıyor, referans olarak duruyor)
