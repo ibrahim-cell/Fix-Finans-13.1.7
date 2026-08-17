@@ -9697,14 +9697,25 @@ function renderProfileStats() {
 }
 
 function applyTheme() {
+    const theme =
+        appState.settings.theme === "system"
+            ? (
+                window.matchMedia("(prefers-color-scheme: light)").matches
+                    ? "light"
+                    : "dark"
+            )
+            : appState.settings.theme;
 
-    document.documentElement.dataset.theme =
-        appState.settings.theme === "light"
-            ? "light"
-            : "dark";
-
+    document.documentElement.dataset.theme = theme;
 }
 
+const systemThemeMedia = window.matchMedia("(prefers-color-scheme: light)");
+
+systemThemeMedia.addEventListener("change", () => {
+    if (appState.settings.theme === "system") {
+        applyTheme();
+    }
+});
 function refreshAllViews() {
 
     renderSettings();
