@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>Fix Finans — 13.2</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%82%BA%3C/text%3E%3C/svg%3E">
@@ -370,6 +370,29 @@ textarea:focus {
     transform: scale(0.97);
 }
 
+.secondary-button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 13px;
+    background: rgba(255,255,255,.06);
+    color: var(--text, #eef2fa);
+    font-size: .68rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+.secondary-button:hover {
+    background: rgba(255,255,255,.10);
+    border-color: rgba(255,255,255,.18);
+}
+.secondary-button:active {
+    transform: scale(0.97);
+}
 
 /* ========================================
    BALANCE CARD
@@ -2415,6 +2438,31 @@ textarea:focus {
 .settings-card-header { margin-bottom: 13px; }
 .settings-card-header h2 { margin-top:4px; font-size:.95rem; }
 
+.profile-info-title-row {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+}
+.profile-info-title-row h2 { margin:4px 0 0; font-size:.95rem; }
+.profile-info-title-row .profile-edit-button {
+    width:34px;
+    height:34px;
+    flex:0 0 34px;
+    margin-top:0;
+}
+.profile-info-title-row .profile-edit-button svg {
+    width:16px;
+    height:16px;
+}
+
+.profile-inline-field { display:flex; flex-direction:column; gap:6px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.06); }
+.profile-inline-field label { color:var(--text-secondary); font-size:.68rem; }
+.profile-inline-field input, .profile-inline-field select { width:100%; min-height:40px; box-sizing:border-box; padding:0 11px; border:1px solid var(--border); border-radius:11px; background:var(--surface, rgba(255,255,255,.04)); color:var(--text); font:inherit; outline:none; }
+.profile-inline-field input:focus, .profile-inline-field select:focus { border-color:var(--primary); box-shadow:0 0 0 2px rgba(0,168,255,.12); }
+.profile-inline-actions { display:flex; justify-content:flex-end; gap:9px; padding-top:13px; }
+.profile-inline-actions button { min-height:38px; padding:0 15px; border-radius:11px; }
+.profile-edit-button span { font-size:18px; line-height:1; }
 .profile-info-list { display:flex; flex-direction:column; }
 .profile-info-row {
     display:flex; align-items:center; justify-content:space-between; gap:15px;
@@ -2450,6 +2498,7 @@ textarea:focus {
 .theme-preview { width:100%; height:52px; border-radius:9px; border:1px solid var(--border); }
 .dark-preview { background:linear-gradient(135deg,#070b13,#101927); }
 .light-preview { background:linear-gradient(135deg,#f5f7fa,#dfe5ec); }
+.system-preview { background:linear-gradient(90deg,#070b13 0 50%,#f5f7fa 50% 100%); }
 .theme-option strong { font-size:.65rem; }
 .theme-option small { color:var(--text-secondary); font-size:.55rem; }
 
@@ -3478,7 +3527,24 @@ textarea:focus {
 .management-row{display:flex;align-items:center;gap:10px;padding:10px 11px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.025)}
 .management-icon{width:30px;height:30px;display:grid;place-items:center;border-radius:10px;background:rgba(124,58,237,.13);font-size:.9rem}
 .management-main{min-width:0;flex:1}.management-main strong{display:block;font-size:.67rem}.management-main small{display:block;margin-top:2px;color:var(--text-secondary);font-size:.55rem}
-.management-delete{width:27px;height:27px;border:0;border-radius:9px;background:rgba(239,68,68,.08);color:var(--expense);font-size:1rem;cursor:pointer}
+.management-actions{display:flex;align-items:center;gap:5px;margin-left:8px;flex:0 0 auto}.management-action{width:28px;height:28px;display:grid;place-items:center;border:1px solid transparent;border-radius:9px;background:rgba(255,255,255,.035);color:var(--text-secondary);font-size:.82rem;line-height:1;cursor:pointer;transition:transform .16s ease,background .16s ease,border-color .16s ease,color .16s ease}.management-action:hover{transform:translateY(-1px);background:rgba(124,58,237,.12);border-color:rgba(124,58,237,.24);color:var(--text)}.management-action.edit{color:#b9a7ff}.management-action.delete{color:#ff7180;background:rgba(239,68,68,.07)}.management-action.move{color:#8fa0b8;cursor:grab}.management-action.move:active{cursor:grabbing}.management-row.is-dragging{opacity:.55;transform:scale(.99)}.management-row.drop-target{border-color:rgba(124,58,237,.5);box-shadow:0 0 0 2px rgba(124,58,237,.08)}
+.management-actions{display:flex;align-items:center;gap:6px;margin-left:8px;flex:0 0 auto}
+.management-action{width:30px;height:30px;padding:0;display:grid;place-items:center;box-sizing:border-box;border:1px solid transparent;border-radius:9px;background:rgba(255,255,255,.035);color:var(--text-secondary);line-height:0;cursor:pointer;transition:transform .16s ease,background .16s ease,border-color .16s ease,color .16s ease}
+.management-action svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.management-action.move{color:#9aa8bd;cursor:grab}
+.management-action.move:active{cursor:grabbing}
+.management-action.edit{color:#b9a7ff}
+.management-action.delete{color:#ff7180;background:rgba(239,68,68,.07)}
+.management-action:hover{transform:translateY(-1px);background:rgba(124,58,237,.12);border-color:rgba(124,58,237,.24);color:var(--text)}
+.management-action.delete:hover{background:rgba(239,68,68,.13);border-color:rgba(239,68,68,.24);color:#ff8793}
+@media(max-width:520px){.management-actions{gap:5px;margin-left:4px}.management-action{width:30px;height:30px}.management-action svg{width:14px;height:14px}}
+
+
+
+.ff-category-toolbar{display:flex;align-items:center;gap:6px;margin:0 0 9px}
+.ff-category-toolbar button{min-height:28px;padding:0 9px;border:1px solid rgba(139,92,246,.22);border-radius:8px;background:rgba(255,255,255,.035);color:var(--text-secondary);font:600 .58rem/1 inherit;cursor:pointer}
+.ff-category-toolbar button:hover{background:rgba(124,58,237,.12);border-color:rgba(139,92,246,.38);color:var(--text)}
+@media(max-width:520px){.ff-category-toolbar{gap:5px}.ff-category-toolbar button{padding:0 8px}}
 
 /* 13.1.3 FINAL UI FIX — NET BAKİYE GÖZÜ + SAĞA SWIPE + DETAY BOTTOM SHEET */
 .balance-kicker-row{
@@ -3883,6 +3949,47 @@ body {
 .mobile-page-title { text-align:center; min-width:0; }
 .mobile-page-title span { display:block; color:#6f7890; font-size:.62rem; margin-bottom:2px; }
 .mobile-page-title h1 { font-size:1.05rem; letter-spacing:-.02em; }
+
+
+/* ---------- SAYFA GERİ OKU — İŞLEMLER SAYFASIYLA AYNI TASARIM ---------- */
+.page-back-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: rgba(14,21,39,.82);
+    border: 1px solid rgba(255,255,255,.07);
+    color: #e7ebf7;
+    box-shadow: 0 12px 28px rgba(0,0,0,.18);
+    cursor: pointer;
+    z-index: 2;
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 300;
+    padding: 0 0 4px;
+    font-family: inherit;
+    transition: transform .16s ease, background .16s ease;
+}
+.page-back-button:hover {
+    background: rgba(255,255,255,.08);
+    transform: translateY(-1px);
+}
+.analytics-page, .profile-page, .settings-page, .debt-receivable-page { position: relative; }
+.analytics-page > .page-header,
+.profile-page > .page-header,
+.settings-page > .page-header,
+.debt-receivable-page > .page-header { padding-left: 54px; }
+@media (max-width: 430px) {
+    .page-back-button { top: 0; left: 0; }
+    .analytics-page > .page-header,
+    .profile-page > .page-header,
+    .settings-page > .page-header,
+    .debt-receivable-page > .page-header { padding-left: 54px; }
+}
 
 /* ---------- İŞLEMLER ---------- */
 .transactions-page { padding-bottom:20px; }
@@ -4352,9 +4459,9 @@ body.ff-splash-lock > *:not(#ff-splash){visibility:hidden}
 .ff-splash.hide{opacity:0;visibility:hidden;pointer-events:none}
 .ff-splash-bg{position:absolute;inset:-5%;background:radial-gradient(circle at 50% 42%,rgba(91,38,168,.24),transparent 36%),radial-gradient(circle at 20% 20%,rgba(91,38,168,.22),transparent 28%),radial-gradient(circle at 82% 60%,rgba(0,110,255,.18),transparent 30%),#050313;z-index:-3}
 .ff-splash-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,2,18,.22),rgba(4,2,18,.52));}
-.ff-splash-brand{position:relative;width:min(58vw,330px);aspect-ratio:657/697;display:grid;place-items:center;animation:ffBrandIn 1.15s cubic-bezier(.16,1,.3,1) both;filter:drop-shadow(0 22px 60px rgba(77,47,255,.38)) drop-shadow(0 0 46px rgba(124,80,255,.28));}
+.ff-splash-brand{position:relative;width:min(58vw,330px);aspect-ratio:657/697;display:grid;place-items:center;animation:ffBrandIn .62s cubic-bezier(.16,1,.3,1) both;filter:drop-shadow(0 22px 60px rgba(77,47,255,.38)) drop-shadow(0 0 46px rgba(124,80,255,.28));}
 .ff-splash-brand img{width:100%;height:100%;object-fit:contain;display:block;}
-.ff-splash-shine{position:absolute;left:-30%;top:0;width:22%;height:100%;transform:skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);filter:blur(4px);opacity:0;animation:ffShine 2.45s 1.0s ease-in-out both;pointer-events:none}
+.ff-splash-shine{position:absolute;left:-30%;top:0;width:22%;height:100%;transform:skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);filter:blur(4px);opacity:0;animation:ffShine .8s .15s ease-in-out both;pointer-events:none}
 .ff-splash-orbit{position:absolute;border:1px solid rgba(124,80,255,.14);border-radius:50%;width:min(118vw,780px);height:min(72vw,470px);transform:rotate(-13deg);box-shadow:0 0 30px rgba(54,83,255,.06) inset;opacity:.7;}
 .ff-orbit-a{animation:ffOrbit 6s linear infinite}
 .ff-orbit-b{width:min(105vw,690px);height:min(58vw,380px);transform:rotate(19deg);border-color:rgba(0,157,255,.11);animation:ffOrbitReverse 8s linear infinite}
@@ -4370,6 +4477,105 @@ body.ff-splash-lock > *:not(#ff-splash){visibility:hidden}
 @keyframes ffParticles{to{background-position:120px 100px,-50px 10px}}
 @media(max-width:480px){.ff-splash-brand{width:min(72vw,350px)}.ff-money{width:34px;height:34px;font-size:14px}.ff-splash-orbit{width:125vw;height:78vw}.ff-orbit-b{width:115vw;height:65vw}}
 @media(prefers-reduced-motion:reduce){.ff-splash-brand,.ff-splash-shine,.ff-money,.ff-splash-orbit,.ff-splash-particles{animation:none!important}.ff-money{opacity:.18}.ff-splash-shine{display:none}}
+</style>
+
+<style id="fix-finans-responsive-device-header">
+/* 13.3.2 — RESPONSIVE DEVICE HEADER
+   Samsung / iPhone / farklı ekran oranlarında üst alanı kompakt tutar. */
+@media (max-width: 767px) {
+  .app {
+    width: 100%;
+    max-width: 620px;
+    padding: clamp(6px, 1.6vh, 12px) 12px calc(112px + env(safe-area-inset-bottom));
+  }
+
+  .app-header {
+    position: relative;
+    top: auto;
+    gap: 8px;
+    min-height: 38px;
+    margin-bottom: 10px;
+    padding: 2px 0 7px;
+    background: transparent;
+    border-bottom: 0;
+  }
+
+  .premium-home-brand { gap: 7px; }
+  .home-menu-button {
+    flex: 0 0 34px !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    border-radius: 10px;
+  }
+  .home-menu-button .header-icon { width: 15px; height: 15px; }
+
+  .header-welcome { gap: 0; }
+  .header-eyebrow { font-size: .52rem !important; line-height: 1.1; }
+  .header-welcome h1 {
+    font-size: .86rem !important;
+    line-height: 1.12;
+    margin: 1px 0 0;
+  }
+  .header-subtitle {
+    font-size: .48rem !important;
+    line-height: 1.1;
+    margin-top: 1px;
+  }
+
+  .fix-header-actions {
+    gap: 3px !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+  }
+  .fix-header-actions .header-button {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+    max-width: 30px !important;
+    flex: 0 0 30px !important;
+    border-radius: 9px;
+  }
+  .fix-header-actions .header-icon { width: 14px !important; height: 14px !important; }
+
+  .balance-section { margin-top: 0; }
+}
+
+@media (max-width: 380px) {
+  .app { padding-left: 10px; padding-right: 10px; }
+  .app-header { gap: 5px; margin-bottom: 8px; padding-bottom: 5px; }
+  .home-menu-button {
+    flex-basis: 32px !important; width: 32px !important; height: 32px !important;
+    min-width: 32px !important; min-height: 32px !important; max-width: 32px !important;
+  }
+  .header-welcome h1 { font-size: .8rem !important; }
+  .header-eyebrow { font-size: .48rem !important; }
+  .header-subtitle { display: none; }
+  .fix-header-actions .header-button {
+    width: 28px !important; height: 28px !important;
+    min-width: 28px !important; min-height: 28px !important; max-width: 28px !important;
+    flex-basis: 28px !important;
+  }
+}
+</style>
+
+
+<style id="fix-finans-google-auth-style">
+  .ff-google-auth-card{margin-top:16px}
+  .ff-google-status{display:flex;align-items:center;gap:12px;margin-top:14px}
+  .ff-google-avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;flex:0 0 42px;background:rgba(124,92,255,.14);border:1px solid rgba(124,92,255,.35);color:#fff;font-weight:800;overflow:hidden}
+  .ff-google-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .ff-google-copy{min-width:0;display:grid;gap:3px}
+  .ff-google-copy strong{font-size:.82rem}
+  .ff-google-copy span{font-size:.62rem;color:var(--text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ff-google-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .ff-google-button{min-height:40px;padding:0 14px;border-radius:11px;border:1px solid rgba(124,92,255,.28);background:linear-gradient(135deg,#6d4aff,#4f2fe1);color:#fff;font:inherit;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+  .ff-google-button.secondary{background:rgba(255,255,255,.045);border-color:var(--border);color:var(--text)}
+  .ff-google-button:disabled{opacity:.6;cursor:wait}
+  .ff-google-note{margin-top:8px;color:var(--text-secondary);font-size:.58rem;line-height:1.45}
+  @media (max-width:520px){.ff-google-actions .ff-google-button{flex:1 1 140px}}
 </style>
 </head>
 
@@ -4923,6 +5129,8 @@ body.ff-splash-lock > *:not(#ff-splash){visibility:hidden}
             id="debt-receivable-page"
             aria-labelledby="debt-receivable-page-title"
         >
+            <button type="button" class="page-back-button" id="debt-back-button" aria-label="Ana sayfaya dön" title="Ana sayfaya dön">‹</button>
+
             <div class="page-header">
                 <div>
                     <span class="section-label">Finansal Takip</span>
@@ -5367,6 +5575,8 @@ body.ff-splash-lock > *:not(#ff-splash){visibility:hidden}
             aria-labelledby="analytics-page-title"
         >
 
+            <button type="button" class="page-back-button" id="analytics-back-button" aria-label="Ana sayfaya dön" title="Ana sayfaya dön">‹</button>
+
             <div class="page-header analytics-header">
 
                 <div>
@@ -5526,7 +5736,7 @@ body.ff-splash-lock > *:not(#ff-splash){visibility:hidden}
 
         <section class="page-section goals-page" id="goals-page" aria-labelledby="goals-page-title">
             <div class="page-header goals-header">
-                <button type="button" class="icon-button" id="goals-back-button" aria-label="Ana sayfaya dön">←</button>
+                <button type="button" class="mobile-back-button" id="goals-back-button" aria-label="Ana sayfaya dön" title="Ana sayfaya dön">‹</button>
                 <div class="goals-header-title">
                     <span class="section-label">Birikim Planı</span>
                     <h1 id="goals-page-title">Hedeflerim</h1>
@@ -5589,6 +5799,8 @@ body.ff-splash-lock > *:not(#ff-splash){visibility:hidden}
             aria-labelledby="profile-page-title"
         >
 
+            <button type="button" class="page-back-button" id="profile-back-button" aria-label="Ana sayfaya dön" title="Ana sayfaya dön">‹</button>
+
             <div class="page-header">
                 <div>
                     <span class="section-label">Hesap</span>
@@ -5606,12 +5818,6 @@ body.ff-splash-lock > *:not(#ff-splash){visibility:hidden}
                     <h2 id="profile-name">İbrahim</h2>
                     <small>Finans Yönetimi</small>
                 </div>
-                <button type="button" class="icon-button profile-edit-button" id="profile-edit-button" aria-label="Profili düzenle" title="Profili düzenle">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 20h9" />
-                        <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4Z" />
-                    </svg>
-                </button>
             </article>
 
             <div class="profile-summary-grid">
@@ -5624,7 +5830,15 @@ body.ff-splash-lock > *:not(#ff-splash){visibility:hidden}
             <article class="settings-card">
                 <div class="settings-card-header">
                     <span class="section-label">Hesap Bilgileri</span>
+                <div class="profile-info-title-row">
                     <h2>Profil Bilgileri</h2>
+                    <button type="button" class="icon-button profile-edit-button" id="profile-edit-button" aria-label="Profili düzenle" title="Profili düzenle">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 20h9" />
+                            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4Z" />
+                        </svg>
+                    </button>
+                </div>
                 </div>
                 <div class="profile-info-list">
                     <div class="profile-info-row"><span>Ad</span><strong id="profile-info-name">İbrahim</strong></div>
@@ -5646,6 +5860,8 @@ body.ff-splash-lock > *:not(#ff-splash){visibility:hidden}
             id="settings-page"
             aria-labelledby="settings-page-title"
         >
+
+            <button type="button" class="page-back-button" id="settings-back-button" aria-label="Ana sayfaya dön" title="Ana sayfaya dön">‹</button>
 
             <div class="page-header">
                 <div>
@@ -5715,6 +5931,43 @@ body.ff-splash-lock > *:not(#ff-splash){visibility:hidden}
 </div>
             </article>
 
+            <article class="settings-card" id="ff-appearance-card-static">
+                <div class="settings-card-header">
+                    <span class="section-label">Görünüm</span>
+                    <h2>Yazı Boyutu &amp; Arayüz Ölçeği</h2>
+                </div>
+                <div class="setting-row" style="flex-direction:column;align-items:stretch;gap:10px;">
+                    <div class="setting-info"><strong>Yazı Boyutu</strong><span>Küçük / Normal / Büyük</span></div>
+                    <div class="theme-selector" id="ff-font-size-selector-static" style="grid-template-columns:repeat(3,1fr);">
+                        <button type="button" class="theme-option" data-font="small"><strong>Küçük</strong></button>
+                        <button type="button" class="theme-option" data-font="normal"><strong>Normal</strong></button>
+                        <button type="button" class="theme-option" data-font="large"><strong>Büyük</strong></button>
+                    </div>
+                </div>
+                <div class="setting-row" style="flex-direction:column;align-items:stretch;gap:10px;margin-top:14px;">
+                    <div class="setting-info"><strong>Arayüz Ölçeği</strong><span>Kompakt / Standart / Rahat</span></div>
+                    <div class="theme-selector" id="ff-ui-scale-selector-static" style="grid-template-columns:repeat(3,1fr);">
+                        <button type="button" class="theme-option" data-scale="compact"><strong>Kompakt</strong></button>
+                        <button type="button" class="theme-option" data-scale="standard"><strong>Standart</strong></button>
+                        <button type="button" class="theme-option" data-scale="comfortable"><strong>Rahat</strong></button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="settings-card" id="ff-reminders-card">
+                <div class="settings-card-header">
+                    <span class="section-label">Hatırlatmalar</span>
+                    <h2>Ödeme / Taksit Hatırlatmaları</h2>
+                </div>
+                <p class="management-description">Aylık ödemelerini takip et, kalan tutarı ve yaklaşan ödeme tarihini gör.</p>
+                <div id="ff-reminder-list" style="display:grid;gap:10px;margin:10px 0;"></div>
+                <button type="button" class="settings-action" id="ff-add-reminder">
+                    <span class="settings-action-icon">+</span>
+                    <span class="settings-action-content"><strong>Yeni Ödeme / Taksit</strong><small>Ödeme adı, gün, tutar ve ödenen tutarı ekle.</small></span>
+                    <span>→</span>
+                </button>
+            </article>
+
             <article class="settings-card">
                 <div class="settings-card-header">
                     <span class="section-label">Veri</span>
@@ -5748,7 +6001,7 @@ body.ff-splash-lock > *:not(#ff-splash){visibility:hidden}
                 <span class="section-label">Uygulama</span>
                 <h2>Finans</h2>
                 <p>Premium finans yönetimi uygulaması.</p>
-                <small>Sürüm 13.2</small>
+                <small>Sürüm 13.3.2</small>
             </article>
 
         </section>
@@ -6343,6 +6596,9 @@ const STORAGE_KEY =
 const GOALS_STORAGE_KEY =
     "finance_goals";
 
+const NOTIFICATIONS_STORAGE_KEY =
+    "finance_notifications";
+
 
 /* ========================================
    UYGULAMA DURUMU
@@ -6351,14 +6607,18 @@ const GOALS_STORAGE_KEY =
 const DEFAULT_SETTINGS = {
 
     name: "İbrahim",
-
+    surname: "",
+    phone: "",
+    email: "",
+    gender: "",
+    userId: "",
+    avatar: "",
     currency: "TRY",
-
     hideBalance: false,
-
     notifications: true,
-
-    theme: "dark"
+    theme: "dark",
+    fontSize: "normal",
+    uiScale: "standard"
 
 };
 
@@ -6387,6 +6647,8 @@ const appState = {
     transactions: [],
 
     goals: [],
+
+    notifications: [],
 
     transactionFilters: {
 
@@ -6500,6 +6762,9 @@ const analyticsPage =
     document.querySelector(
         "#analytics-page"
     );
+
+const analyticsBackButton =
+    document.querySelector("#analytics-back-button");
 
 const analyticsMonth =
     document.querySelector(
@@ -6688,8 +6953,17 @@ const dashboardGoalsList =
 const profilePage =
     document.querySelector("#profile-page");
 
+const profileBackButton =
+    document.querySelector("#profile-back-button");
+
 const settingsPage =
     document.querySelector("#settings-page");
+
+const debtBackButton =
+    document.querySelector("#debt-back-button");
+
+const settingsBackButton =
+    document.querySelector("#settings-back-button");
 
 const profileName =
     document.querySelector("#profile-name");
@@ -6796,6 +7070,21 @@ function normalizeSettings(settings) {
             ? source.currency
             : DEFAULT_SETTINGS.currency;
 
+    const theme =
+        source.theme === "light" || source.theme === "system"
+            ? source.theme
+            : "dark";
+
+    const fontSize =
+        ["small", "normal", "large"].includes(source.fontSize)
+            ? source.fontSize
+            : "normal";
+
+    const uiScale =
+        ["compact", "standard", "comfortable"].includes(source.uiScale)
+            ? source.uiScale
+            : "standard";
+
     return {
 
         ...DEFAULT_SETTINGS,
@@ -6807,6 +7096,36 @@ function normalizeSettings(settings) {
                 ? source.name.trim().slice(0, 60)
                 : DEFAULT_SETTINGS.name,
 
+        surname:
+            typeof source.surname === "string"
+                ? source.surname.trim().slice(0, 60)
+                : "",
+
+        phone:
+            typeof source.phone === "string"
+                ? source.phone.trim().slice(0, 30)
+                : "",
+
+        email:
+            typeof source.email === "string"
+                ? source.email.trim().slice(0, 80)
+                : "",
+
+        gender:
+            ["male", "female", "other", ""].includes(source.gender)
+                ? source.gender
+                : "",
+
+        userId:
+            typeof source.userId === "string" && source.userId
+                ? source.userId
+                : (DEFAULT_SETTINGS.userId || ("FF-" + Date.now().toString(36).toUpperCase())),
+
+        avatar:
+            typeof source.avatar === "string"
+                ? source.avatar
+                : "",
+
         currency,
 
         hideBalance:
@@ -6815,8 +7134,11 @@ function normalizeSettings(settings) {
         notifications:
             source.notifications !== false,
 
-        theme:
-            source.theme === "light" ? "light" : "dark"
+        theme,
+
+        fontSize,
+
+        uiScale
 
     };
 
@@ -7217,9 +7539,11 @@ function saveTransactions() {
         localStorage.setItem(
             STORAGE_KEY,
             JSON.stringify(
-                appState.transactions
+                Array.isArray(appState.transactions) ? appState.transactions : []
             )
         );
+
+        return localStorage.getItem(STORAGE_KEY) !== null;
 
     } catch (error) {
 
@@ -7228,8 +7552,54 @@ function saveTransactions() {
             error
         );
 
+        return false;
+
     }
 
+}
+
+/* ========================================
+   UYGULAMA İÇİ BİLDİRİMLER
+======================================== */
+
+function loadNotifications() {
+    try {
+        const raw = localStorage.getItem(NOTIFICATIONS_STORAGE_KEY);
+        const parsed = raw ? JSON.parse(raw) : [];
+        appState.notifications = Array.isArray(parsed) ? parsed.filter(item => item && item.id && item.text) : [];
+    } catch (error) {
+        console.error("Bildirimler yüklenemedi:", error);
+        appState.notifications = [];
+    }
+}
+
+function saveNotifications() {
+    try {
+        localStorage.setItem(NOTIFICATIONS_STORAGE_KEY, JSON.stringify((appState.notifications || []).slice(0, 50)));
+    } catch (error) {
+        console.error("Bildirimler kaydedilemedi:", error);
+    }
+}
+
+function addAppNotification(text, detail = "", type = "info") {
+    if (appState?.settings?.notifications === false) return;
+    const item = {
+        id: `n-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`,
+        text: String(text).slice(0, 140),
+        detail: String(detail).slice(0, 180),
+        type,
+        createdAt: new Date().toISOString(),
+        read: false
+    };
+    appState.notifications = [item, ...(appState.notifications || [])].slice(0, 50);
+    saveNotifications();
+    updateNotificationBadge();
+}
+
+function notificationTime(value) {
+    const d = new Date(value);
+    if (!Number.isFinite(d.getTime())) return "Şimdi";
+    return d.toLocaleString("tr-TR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
 }
 
 
@@ -8441,7 +8811,16 @@ if (transactionForm) {
                     }
 
                     saveTransactions();
-                    refreshAllViews();
+                    try {
+                        addAppNotification("İşlem güncellendi", `${displayAmount(transaction.amount)} · ${transaction.description || transaction.category || "İşlem"}`, "update");
+                    } catch (notificationError) {
+                        console.error("Güncelleme bildirimi oluşturulamadı:", notificationError);
+                    }
+                    try {
+                        refreshAllViews();
+                    } catch (refreshError) {
+                        console.error("Güncelleme sonrası ekran yenilenemedi:", refreshError);
+                    }
                     closeTransactionModal();
                     showToast("İşlem başarıyla güncellendi.", "success");
                     return;
@@ -8465,10 +8844,34 @@ if (transactionForm) {
                     return;
                 }
 
+                // İşlemi önce güvenli şekilde kaydet. UI/bildirim tarafındaki olası bir hata
+                // kayıt işlemini başarısız göstermemeli.
                 appState.transactions.unshift(transaction);
-
                 saveTransactions();
-                refreshAllViews();
+
+                const savedTransaction = appState.transactions.some(item => item.id === transaction.id);
+                if (!savedTransaction) {
+                    throw new Error("İşlem kaydı doğrulanamadı.");
+                }
+
+                try {
+                    addAppNotification(
+                        transaction.type === "income" ? "Yeni gelir eklendi" :
+                        transaction.type === "expense" ? "Yeni gider eklendi" :
+                        transaction.type === "transfer" ? "Yeni transfer eklendi" : "Yeni finans işlemi eklendi",
+                        `${displayAmount(transaction.amount)} · ${transaction.description || transaction.category || "İşlem"}`,
+                        transaction.type
+                    );
+                } catch (notificationError) {
+                    console.error("İşlem bildirimi oluşturulamadı:", notificationError);
+                }
+
+                try {
+                    refreshAllViews();
+                } catch (refreshError) {
+                    console.error("İşlem sonrası ekran yenilenemedi:", refreshError);
+                }
+
                 closeTransactionModal();
 
                 showToast(
@@ -8838,6 +9241,7 @@ if (deleteConfirm) {
                 );
 
             saveTransactions();
+            addAppNotification("İşlem silindi", "İşlem kayıtlarından kaldırıldı.", "delete");
 
             renderTransactions();
 
@@ -9614,6 +10018,13 @@ function renderSettings() {
         );
     });
 
+    document.querySelectorAll("#ff-font-size-selector-static .theme-option").forEach((button) => {
+        button.classList.toggle("active", button.dataset.font === (appState.settings.fontSize || "normal"));
+    });
+    document.querySelectorAll("#ff-ui-scale-selector-static .theme-option").forEach((button) => {
+        button.classList.toggle("active", button.dataset.scale === (appState.settings.uiScale || "standard"));
+    });
+
     if (profileName) {
         profileName.textContent =
             appState.settings.name;
@@ -9762,30 +10173,95 @@ if (notificationSetting) {
 
 themeOptions.forEach((option) => {
     option.addEventListener("click", () => {
+        const t = option.dataset.theme;
         appState.settings.theme =
-            option.dataset.theme === "light"
-                ? "light"
-                : "dark";
+            t === "light" || t === "system" ? t : "dark";
         saveSettings();
         applyTheme();
         renderSettings();
+        applyFontAndScale();
     });
+});
+
+document.addEventListener("click", (event) => {
+    const fontButton = event.target.closest && event.target.closest("#ff-font-size-selector-static .theme-option");
+    const scaleButton = event.target.closest && event.target.closest("#ff-ui-scale-selector-static .theme-option");
+    if (!fontButton && !scaleButton) return;
+    if (fontButton) appState.settings.fontSize = fontButton.dataset.font;
+    if (scaleButton) appState.settings.uiScale = scaleButton.dataset.scale;
+    saveSettings();
+    if (typeof window.applyFontAndScale === "function") window.applyFontAndScale();
+    renderSettings();
+    if (typeof window.showToast === "function") window.showToast(fontButton ? "Yazı boyutu güncellendi." : "Arayüz ölçeği güncellendi.", "success");
 });
 
 if (profileEditButton) {
     profileEditButton.addEventListener("click", () => {
-        const currentName = appState.settings.name;
-        openPremiumInputModal({
-            title: "Profil Adını Düzenle", kicker: "Profil", label: "Adınız", value: currentName, submitLabel: "Kaydet",
-            onSubmit: (newName, close) => {
-                if (!newName || !String(newName).trim()) { showToast("Ad alanı boş bırakılamaz.", "error"); return; }
-                appState.settings.name = String(newName).trim().slice(0,60);
-                saveSettings(); renderSettings(); renderProfileStats(); close();
-                showToast("Profil adı güncellendi.", "success");
-            }
-        });
+        openInlineProfileEditor();
     });
 }
+
+function openInlineProfileEditor() {
+    const list = document.querySelector("#profile-info-list");
+    const editButton = document.querySelector("#profile-edit-button");
+    if (!list || list.dataset.editing === "1") return;
+
+    const s = appState.settings || {};
+    const originalHtml = list.innerHTML;
+    const originalButtonHtml = editButton ? editButton.innerHTML : "";
+    list.dataset.editing = "1";
+    list.innerHTML = `
+      <div class="profile-inline-field"><label>Ad</label><input id="profile-edit-name" type="text" maxlength="60" value="${escapeHtml(s.name || "")}"></div>
+      <div class="profile-inline-field"><label>Soyad</label><input id="profile-edit-surname" type="text" maxlength="60" value="${escapeHtml(s.surname || "")}"></div>
+      <div class="profile-inline-field"><label>Telefon</label><input id="profile-edit-phone" type="tel" maxlength="30" value="${escapeHtml(s.phone || "")}"></div>
+      <div class="profile-inline-field"><label>E-posta</label><input id="profile-edit-email" type="email" maxlength="80" value="${escapeHtml(s.email || "")}"></div>
+      <div class="profile-inline-field"><label>Cinsiyet</label><select id="profile-edit-gender">
+        <option value="">Belirtilmemiş</option>
+        <option value="male" ${s.gender === "male" ? "selected" : ""}>Erkek</option>
+        <option value="female" ${s.gender === "female" ? "selected" : ""}>Kadın</option>
+        <option value="other" ${s.gender === "other" ? "selected" : ""}>Diğer</option>
+      </select></div>
+      <div class="profile-inline-actions">
+        <button type="button" class="secondary-button" id="profile-inline-cancel">İptal</button>
+        <button type="button" class="primary-button" id="profile-inline-save">Kaydet</button>
+      </div>
+    `;
+
+    if (editButton) {
+        editButton.setAttribute("aria-label", "Düzenlemeyi kapat");
+        editButton.title = "Düzenlemeyi kapat";
+        editButton.innerHTML = '<span aria-hidden="true">×</span>';
+    }
+
+    const restore = () => {
+        list.innerHTML = originalHtml;
+        delete list.dataset.editing;
+        if (editButton) {
+            editButton.innerHTML = originalButtonHtml;
+            editButton.setAttribute("aria-label", "Profili düzenle");
+            editButton.title = "Profili düzenle";
+        }
+    };
+
+    const cancel = document.querySelector("#profile-inline-cancel");
+    const save = document.querySelector("#profile-inline-save");
+    if (cancel) cancel.addEventListener("click", () => {
+        restore();
+    });
+    if (save) save.addEventListener("click", () => {
+        appState.settings.name = (document.querySelector("#profile-edit-name")?.value || "").trim().slice(0, 60) || "Kullanıcı";
+        appState.settings.surname = (document.querySelector("#profile-edit-surname")?.value || "").trim().slice(0, 60);
+        appState.settings.phone = (document.querySelector("#profile-edit-phone")?.value || "").trim().slice(0, 30);
+        appState.settings.email = (document.querySelector("#profile-edit-email")?.value || "").trim().slice(0, 80);
+        appState.settings.gender = document.querySelector("#profile-edit-gender")?.value || "";
+        saveSettings();
+        restore();
+        renderProfileAvatar();
+        renderSettings();
+        toast("Profil güncellendi.", "success");
+    });
+}
+
 
 function exportAppData() {
 
@@ -10199,6 +10675,30 @@ if (transactionsFilterButton) {
     });
 }
 
+if (analyticsBackButton) {
+    analyticsBackButton.addEventListener("click", () => {
+        switchPage("Ana Sayfa");
+    });
+}
+
+if (profileBackButton) {
+    profileBackButton.addEventListener("click", () => {
+        switchPage("Ana Sayfa");
+    });
+}
+
+if (debtBackButton) {
+    debtBackButton.addEventListener("click", () => {
+        switchPage("Ana Sayfa");
+    });
+}
+
+if (settingsBackButton) {
+    settingsBackButton.addEventListener("click", () => {
+        switchPage("Ana Sayfa");
+    });
+}
+
 document.querySelectorAll(".report-period-tab").forEach((tab) => {
     tab.addEventListener("click", () => {
         document.querySelectorAll(".report-period-tab").forEach((item) => item.classList.remove("active"));
@@ -10323,6 +10823,7 @@ function initializeDashboard() {
     loadSettings();
     loadTransactions();
     loadGoals();
+    loadNotifications();
 
     applyTheme();
     renderSettings();
@@ -10338,6 +10839,7 @@ function initializeDashboard() {
     renderProfileStats();
     renderGoals();
     applyBalanceVisibility();
+    updateNotificationBadge();
 
     setDefaultTransactionDate();
 
@@ -11158,6 +11660,12 @@ document.addEventListener(
             </div>
             <div class="management-section">
                 <div class="management-heading"><strong>Kategoriler</strong><button type="button" class="mini-add-button" id="add-category-button">+</button></div>
+                <div class="ff-category-toolbar" id="ff-category-toolbar" aria-label="Kategori sıralama">
+                    <button type="button" data-sort="az">A→Z</button>
+                    <button type="button" data-sort="za">Z→A</button>
+                    <button type="button" data-sort="new">Yeni</button>
+                    <button type="button" data-sort="old">Eski</button>
+                </div>
                 <div id="profile-category-list" class="management-list"></div>
             </div>`;
         profile.appendChild(card);
@@ -11167,23 +11675,62 @@ document.addEventListener(
         renderManagement();
     }
 
+    function sortCategories(mode) {
+        if (!Array.isArray(categories)) return;
+        if (mode === "az") categories.sort((a,b) => String(a.name).localeCompare(String(b.name), "tr"));
+        if (mode === "za") categories.sort((a,b) => String(b.name).localeCompare(String(a.name), "tr"));
+        if (mode === "new") categories.sort((a,b) => String(b.id).localeCompare(String(a.id)));
+        if (mode === "old") categories.sort((a,b) => String(a.id).localeCompare(String(b.id)));
+        write(CATEGORIES_KEY, categories);
+        renderManagement();
+    }
+
+    function bindCategorySort() {
+        const toolbar = document.querySelector("#ff-category-toolbar");
+        if (!toolbar || toolbar.dataset.bound === "1") return;
+        toolbar.dataset.bound = "1";
+        toolbar.querySelectorAll("[data-sort]").forEach(button => {
+            button.addEventListener("click", () => sortCategories(button.dataset.sort));
+        });
+    }
+
     function renderManagement() {
         const accountList = document.querySelector("#profile-account-list");
         const categoryList = document.querySelector("#profile-category-list");
         if (!accountList || !categoryList) return;
 
         accountList.innerHTML = accounts.map(account => `
-            <div class="management-row">
+            <div class="management-row" draggable="true" data-management-kind="account" data-management-id="${escapeHtml(account.id)}">
                 <span class="management-icon">${escapeHtml(account.icon)}</span>
                 <span class="management-main"><strong>${escapeHtml(account.name)}</strong><small>${escapeHtml(account.type)}</small></span>
-                <button type="button" class="management-delete" data-delete-account="${escapeHtml(account.id)}" aria-label="Hesabı sil">×</button>
+                <span class="management-actions">
+                    <button type="button" class="management-action move" data-move-handle aria-label="Taşımak için sürükle" title="Taşı">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M8 8l4-4 4 4M8 16l4 4 4-4"/></svg>
+                    </button>
+                    <button type="button" class="management-action edit" data-edit-account="${escapeHtml(account.id)}" aria-label="Hesabı düzenle" title="Düzenle">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg>
+                    </button>
+                    <button type="button" class="management-action delete" data-delete-account="${escapeHtml(account.id)}" aria-label="Hesabı sil" title="Sil">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2M19 6l-1 14H6L5 6"/><path d="M10 11v5M14 11v5"/></svg>
+                    </button>
+                </span>
             </div>`).join("");
 
         categoryList.innerHTML = categories.map(category => `
-            <div class="management-row">
+            <div class="management-row" draggable="true" data-management-kind="category" data-management-id="${escapeHtml(category.id)}">
                 <span class="management-icon">${escapeHtml(category.icon)}</span>
                 <span class="management-main"><strong>${escapeHtml(category.name)}</strong><small>${category.type === "income" ? "Gelir" : category.type === "expense" ? "Gider" : "Gelir + Gider"}</small></span>
-                <button type="button" class="management-delete" data-delete-category="${escapeHtml(category.id)}" aria-label="Kategoriyi sil">×</button>
+                <span class="management-actions">
+                    <button type="button" class="management-action move" data-move-handle aria-label="Taşımak için sürükle" title="Taşı">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M8 8l4-4 4 4M8 16l4 4 4-4"/></svg>
+                    </button>
+                    <button type="button" class="management-action edit" data-edit-category="${escapeHtml(category.id)}" aria-label="Kategoriyi düzenle" title="Düzenle">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg>
+                    </button>
+                    <button type="button" class="management-action delete" data-delete-category="${escapeHtml(category.id)}" aria-label="Kategoriyi sil" title="Sil">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2M19 6l-1 14H6L5 6"/><path d="M10 11v5M14 11v5"/></svg>
+                    </button>
+                </span>
             </div>`).join("");
 
         accountList.querySelectorAll("[data-delete-account]").forEach(button => {
@@ -11192,7 +11739,16 @@ document.addEventListener(
         categoryList.querySelectorAll("[data-delete-category]").forEach(button => {
             button.addEventListener("click", () => deleteCategory(button.dataset.deleteCategory));
         });
+        accountList.querySelectorAll("[data-edit-account]").forEach(button => {
+            button.addEventListener("click", () => editManagementItem("account", button.dataset.editAccount));
+        });
+        categoryList.querySelectorAll("[data-edit-category]").forEach(button => {
+            button.addEventListener("click", () => editManagementItem("category", button.dataset.editCategory));
+        });
+        setupManagementDrag(accountList, "account");
+        setupManagementDrag(categoryList, "category");
 
+        bindCategorySort();
         refreshTransactionOptions();
     }
 
@@ -11234,6 +11790,65 @@ document.addEventListener(
         write(CATEGORIES_KEY, categories);
         renderManagement();
         toast("Kategori silindi.");
+    }
+
+    function editManagementItem(kind, id) {
+        const list = kind === "account" ? accounts : categories;
+        const item = list.find(entry => entry.id === id);
+        if (!item) return;
+        openPremiumInputModal({
+            title: kind === "account" ? "Hesabı Düzenle" : "Kategoriyi Düzenle",
+            kicker: "Finans Yapısı",
+            label: kind === "account" ? "Hesap adı" : "Kategori adı",
+            value: item.name,
+            submitLabel: "Kaydet",
+            onSubmit: (name, close) => {
+                const nextName = String(name || "").trim();
+                if (!nextName) { toast("Ad alanı boş bırakılamaz."); return; }
+                item.name = nextName.slice(0, 60);
+                write(kind === "account" ? ACCOUNTS_KEY : CATEGORIES_KEY, list);
+                renderManagement();
+                close();
+                toast(kind === "account" ? "Hesap güncellendi." : "Kategori güncellendi.");
+            }
+        });
+    }
+
+    function setupManagementDrag(container, kind) {
+        let dragged = null;
+        container.querySelectorAll(".management-row").forEach(row => {
+            row.addEventListener("dragstart", event => {
+                dragged = row;
+                row.classList.add("is-dragging");
+                event.dataTransfer.effectAllowed = "move";
+                event.dataTransfer.setData("text/plain", row.dataset.managementId);
+            });
+            row.addEventListener("dragend", () => {
+                row.classList.remove("is-dragging");
+                container.querySelectorAll(".drop-target").forEach(el => el.classList.remove("drop-target"));
+                dragged = null;
+            });
+            row.addEventListener("dragover", event => {
+                event.preventDefault();
+                if (dragged && dragged !== row) row.classList.add("drop-target");
+            });
+            row.addEventListener("dragleave", () => row.classList.remove("drop-target"));
+            row.addEventListener("drop", event => {
+                event.preventDefault();
+                row.classList.remove("drop-target");
+                if (!dragged || dragged === row) return;
+                const sourceId = dragged.dataset.managementId;
+                const targetId = row.dataset.managementId;
+                const list = kind === "account" ? accounts : categories;
+                const sourceIndex = list.findIndex(item => item.id === sourceId);
+                const targetIndex = list.findIndex(item => item.id === targetId);
+                if (sourceIndex < 0 || targetIndex < 0) return;
+                const [moved] = list.splice(sourceIndex, 1);
+                list.splice(targetIndex, 0, moved);
+                write(kind === "account" ? ACCOUNTS_KEY : CATEGORIES_KEY, list);
+                renderManagement();
+            });
+        });
     }
 
     function replaceData(importedAccounts, importedCategories) {
@@ -11467,10 +12082,40 @@ document.addEventListener(
         if (typeof validateTransaction === "function" && !validateTransaction(transaction)) {
             return showTransferError("Transfer bilgileri geçersiz.");
         }
-        if (!appState?.transactions) return showTransferError("İşlem deposu hazır değil.");
+        if (!appState?.transactions || !Array.isArray(appState.transactions)) {
+            return showTransferError("İşlem deposu hazır değil.");
+        }
+
+        // Önce kaydı oluştur ve kalıcı depolamayı doğrula.
         appState.transactions.unshift(transaction);
-        if (typeof saveTransactions === "function") saveTransactions();
-        if (typeof refreshAllViews === "function") refreshAllViews();
+        const saved = typeof saveTransactions === "function" ? saveTransactions() : false;
+        const persisted = localStorage.getItem(STORAGE_KEY) || "[]";
+        let savedTransaction = false;
+        try {
+            const stored = JSON.parse(persisted);
+            savedTransaction = Array.isArray(stored) && stored.some(item => item?.id === transaction.id);
+        } catch (_) {}
+
+        if (!saved || !savedTransaction) {
+            appState.transactions = appState.transactions.filter(item => item?.id !== transaction.id);
+            return showTransferError("Transfer kaydedilemedi. Lütfen tekrar dene.");
+        }
+
+        // Bildirim veya ekran yenileme hatası kaydın başarılı olmasını engellememeli.
+        try {
+            if (typeof addAppNotification === "function") {
+                addAppNotification("Yeni transfer eklendi", `${displayAmount(transaction.amount)} · ${transaction.description}`, "transfer");
+            }
+        } catch (notificationError) {
+            console.error("Transfer bildirimi oluşturulamadı:", notificationError);
+        }
+
+        try {
+            if (typeof refreshAllViews === "function") refreshAllViews();
+        } catch (refreshError) {
+            console.error("Transfer sonrası ekran yenilenemedi:", refreshError);
+        }
+
         closeTransferModal();
         if (typeof showToast === "function") showToast("Transfer başarıyla eklendi.", "success");
     }
@@ -11705,6 +12350,10 @@ document.addEventListener(
 .fix-rate-card span{display:block;color:#7d879d;font-size:.58rem;margin-bottom:4px}.fix-rate-card strong{font-size:.72rem;color:#fff}
 .fix-rate-meta{margin-top:10px;font-size:.58rem;color:#6f7990}.fix-loading{padding:18px;text-align:center;color:#8c96ab;font-size:.68rem}
 .fix-notification-list{display:flex;flex-direction:column;gap:7px}
+
+.fix-notification-item.is-new{border-color:rgba(111,76,255,.24);background:rgba(111,76,255,.08)}
+.fix-notification-item strong{display:block;color:#eef2fa;font-size:.68rem;font-weight:800}
+
 .fix-notification-item{padding:10px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);font-size:.66rem;color:#d9deea}
 .fix-notification-item small{display:block;color:#707b92;margin-top:3px}
 .fix-popup-actions{display:flex;justify-content:flex-end;gap:7px;margin-top:12px}
@@ -11835,10 +12484,12 @@ function updateNotificationBadge(){
   const badge=$("#header-notification-badge");
   if(!badge) return;
   const enabled=appState?.settings?.notifications!==false;
-  const goals=appState?.goals||[];
-  const hasGoal=goals.some(g=>Number(g.targetAmount)>Number(g.currentAmount)&&Number(g.currentAmount)/Number(g.targetAmount)>=.9);
-  badge.hidden=!(enabled&&hasGoal);
+  const unread=(appState?.notifications||[]).filter(n=>n && n.read!==true).length;
+  if(!enabled || !unread){ badge.hidden=true; badge.textContent=""; return; }
+  badge.hidden=false;
+  badge.textContent=unread>9?"9+":String(unread);
 }
+
 function openFixPopup(kind){
   document.querySelector("#fix-popup-root")?.remove();
   const root=document.createElement("div");root.id="fix-popup-root";
@@ -11854,20 +12505,26 @@ function openFixPopup(kind){
     const loadRates = () => {
       content.innerHTML = '<div class="fix-loading">Kurlar güncelleniyor...</div>';
       const fetchJSON = (url) => fetch(url, {cache:'no-store'}).then(r => r.ok ? r.json() : Promise.reject(new Error('network')));
-      const fx = (base) => fetchJSON(`https://api.frankfurter.dev/v2/rate/${base}/TRY?providers=TCMB`)
-        .catch(() => fetchJSON(`https://api.frankfurter.dev/v2/rate/${base}/TRY`));
-      Promise.all([
-        fx('USD'),
-        fx('EUR'),
-        fetchJSON('https://api.gold-api.com/price/XAU').catch(() => null),
-        fetchJSON('https://api.coinbase.com/v2/prices/BTC-TRY/spot').catch(() => null)
-      ]).then(([usd, eur, xau, btc]) => {
+      // 13.3.2 currency reliability fix:
+      // FX uses a no-key feed refreshed every ~5 minutes; Bitcoin is fetched directly
+      // in TRY from CoinGecko's keyless public API; gold remains a live XAU/USD spot.
+      const fx = (base) => fetchJSON(`https://fxapi.app/api/${base}/TRY.json`);
+      const goldP = fetchJSON('https://api.gold-api.com/price/XAU').catch(() => null);
+      const btcP = fetchJSON('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=try&include_last_updated_at=true').catch(() => null);
+      Promise.allSettled([fx('USD'), fx('EUR'), goldP, btcP]).then((results) => {
+        const [usdR, eurR, goldR, btcR] = results;
+        const usd = usdR.status === 'fulfilled' ? usdR.value : null;
+        const eur = eurR.status === 'fulfilled' ? eurR.value : null;
+        const xau = goldR.status === 'fulfilled' ? goldR.value : null;
+        const btc = btcR.status === 'fulfilled' ? btcR.value : null;
         const usdTry = Number(usd?.rate || 0);
         const eurTry = Number(eur?.rate || 0);
         const goldUsd = Number(xau?.price ?? xau?.close ?? xau?.value ?? 0);
         const gramTry = goldUsd && usdTry ? (goldUsd / 31.1034768) * usdTry : 0;
-        const btcTry = Number(btc?.data?.amount || 0);
-        const latest = [usd?.date, eur?.date].filter(Boolean).sort().reverse()[0] || new Date().toISOString().slice(0,10);
+        const btcTry = Number(btc?.bitcoin?.try || 0);
+        const updateStamps = [usd?.timestamp, eur?.timestamp, xau?.timestamp ? new Date(Number(xau.timestamp) * 1000).toISOString() : null, btc?.bitcoin?.last_updated_at ? new Date(Number(btc.bitcoin.last_updated_at) * 1000).toISOString() : null].filter(Boolean).map(v => new Date(v).getTime()).filter(Number.isFinite);
+        const latest = updateStamps.length ? new Date(Math.max(...updateStamps)) : new Date();
+        const latestLabel = latest.toLocaleString('tr-TR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
         const fmt4 = (n) => Number(n) > 0 ? Number(n).toLocaleString('tr-TR',{minimumFractionDigits:4,maximumFractionDigits:4}) : '—';
         const fmt2 = (n) => Number(n) > 0 ? Number(n).toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2}) : '—';
         const fmt0 = (n) => Number(n) > 0 ? Number(n).toLocaleString('tr-TR',{maximumFractionDigits:0}) : '—';
@@ -11882,7 +12539,7 @@ function openFixPopup(kind){
             <div class="fix-rate-card fix-rate-card-key"><span>🥇 Gram Altın</span><strong>${fmt2(gramTry)} ₺</strong><small>Spot XAU</small></div>
             <div class="fix-rate-card fix-rate-card-key"><span>₿ Bitcoin</span><strong>${fmt0(btcTry)} ₺</strong><small>BTC / TRY</small></div>
           </div>
-          <div class="fix-rate-meta">Kaynak: TCMB · Gold API · Coinbase · ${latest}</div>`;
+          <div class="fix-rate-meta">Kaynak: FXAPI · Gold API · CoinGecko · Son güncelleme: ${latestLabel}</div>`;
         const btn = content.querySelector('#fix-rate-refresh');
         if (btn) btn.addEventListener('click', () => { btn.classList.add('loading'); loadRates(); });
       }).catch(() => {
@@ -11894,17 +12551,32 @@ function openFixPopup(kind){
     loadRates();
   }else{
     const enabled=appState?.settings?.notifications!==false;
+    const notifications=(appState?.notifications||[]).slice(0,30);
     const items=[];
-    if(enabled) items.push(`<div class="fix-notification-item">Bildirimler aktif.<small>Finansal uyarılar ve uygulama bildirimleri açık.</small></div>`);
-    const goals=appState?.goals||[];
-    goals.filter(g=>Number(g.targetAmount)>Number(g.currentAmount)&&Number(g.currentAmount)/Number(g.targetAmount)>=.9).slice(0,3).forEach(g=>items.push(`<div class="fix-notification-item">🎯 ${typeof escapeHtml==="function"?escapeHtml(g.name):g.name}<small>Hedefinin %90'ından fazlasına ulaştın.</small></div>`));
-    if(!items.length) items.push('<div class="fix-notification-item">Henüz yeni bildirim yok.<small>Yeni finansal durum oluştuğunda burada görünecek.</small></div>');
-    box.innerHTML=`<div class="fix-popup-head"><div><h3>Bildirimler</h3><p>Finansal hatırlatmalar ve uygulama bildirimleri</p></div><button class="fix-popup-close" type="button">×</button></div><div class="fix-notification-list">${items.join("")}</div><div class="fix-popup-actions"><button type="button" id="fix-notification-clear">Temizle</button></div>`;
+    if(!enabled){
+      items.push('<div class="fix-notification-item">Bildirimler kapalı.<small>Ayarlar → Bildirimler bölümünden tekrar açabilirsin.</small></div>');
+    } else if(notifications.length){
+      notifications.forEach(n=>{
+        const icon=n.type==="income"?"↑":n.type==="expense"?"↓":n.type==="transfer"?"↔":n.type==="delete"?"⌫":n.type==="update"?"✎":"•";
+        items.push(`<div class="fix-notification-item ${n.read?"":"is-new"}"><strong>${icon} ${typeof escapeHtml==="function"?escapeHtml(n.text):n.text}</strong><small>${typeof escapeHtml==="function"?escapeHtml(n.detail||""):n.detail||""} · ${notificationTime(n.createdAt)}</small></div>`);
+      });
+    } else {
+      items.push('<div class="fix-notification-item">Henüz yeni bildirim yok.<small>Gelir, gider, transfer veya işlem değişiklikleri burada görünecek.</small></div>');
+    }
+    box.innerHTML=`<div class="fix-popup-head"><div><h3>Bildirimler</h3><p>Yaptığın işlemler ve finansal uyarılar</p></div><button class="fix-popup-close" type="button">×</button></div><div class="fix-notification-list">${items.join("")}</div><div class="fix-popup-actions"><button type="button" id="fix-notification-clear">Temizle</button></div>`;
     box.querySelector(".fix-popup-close").addEventListener("click",close);
     box.querySelector("#fix-notification-clear").addEventListener("click",()=>{
+      appState.notifications=[];
+      saveNotifications();
       box.querySelector(".fix-notification-list").innerHTML='<div class="fix-notification-item">Bildirimler temizlendi.</div>';
-      $("#header-notification-badge")?.setAttribute("hidden","");
+      updateNotificationBadge();
     });
+    if(enabled && notifications.some(n=>n.read!==true)){
+      appState.notifications=(appState.notifications||[]).map(n=>({...n,read:true}));
+      saveNotifications();
+      updateNotificationBadge();
+    }
+
   }
 }
 
@@ -12120,18 +12792,25 @@ input[type="date"]{min-width:0}
   function renderRateContent(content){
     content.innerHTML = '<div class="fix-loading">Kurlar güncelleniyor...</div>';
     const fetchJSON = (url) => fetch(url, {cache:'no-store'}).then(r => r.ok ? r.json() : Promise.reject(new Error('network')));
-    const fx = (base) => fetchJSON(`https://api.frankfurter.dev/v2/rate/${base}/TRY?providers=TCMB`)
-      .catch(() => fetchJSON(`https://api.frankfurter.dev/v2/rate/${base}/TRY`));
+    // 13.3.2 currency reliability fix:
+    // FX refreshes about every 5 minutes; BTC is requested directly in TRY.
+    const fx = (base) => fetchJSON(`https://fxapi.app/api/${base}/TRY.json`);
     const goldP = fetchJSON('https://api.gold-api.com/price/XAU').catch(() => null);
-    const btcP = fetchJSON('https://api.coinbase.com/v2/prices/BTC-TRY/spot').catch(() => null);
-    Promise.all([fx('USD'), fx('EUR'), goldP, btcP]).then(([usd, eur, xau, btc]) => {
+    const btcP = fetchJSON('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=try&include_last_updated_at=true').catch(() => null);
+    Promise.allSettled([fx('USD'), fx('EUR'), goldP, btcP]).then((results) => {
+      const [usdR, eurR, goldR, btcR] = results;
+      const usd = usdR.status === 'fulfilled' ? usdR.value : null;
+      const eur = eurR.status === 'fulfilled' ? eurR.value : null;
+      const xau = goldR.status === 'fulfilled' ? goldR.value : null;
+      const btc = btcR.status === 'fulfilled' ? btcR.value : null;
       const usdTry = Number(usd?.rate || 0);
       const eurTry = Number(eur?.rate || 0);
       const goldUsd = Number(xau?.price ?? xau?.close ?? xau?.value ?? 0);
       const gramTry = goldUsd && usdTry ? (goldUsd / 31.1034768) * usdTry : 0;
-      const btcTry = Number(btc?.data?.amount || 0);
-      const latest = [usd?.date, eur?.date].filter(Boolean).sort().reverse()[0]
-        || new Date().toISOString().slice(0, 10);
+      const btcTry = Number(btc?.bitcoin?.try || 0);
+      const updateStamps = [usd?.timestamp, eur?.timestamp, xau?.timestamp ? new Date(Number(xau.timestamp) * 1000).toISOString() : null, btc?.bitcoin?.last_updated_at ? new Date(Number(btc.bitcoin.last_updated_at) * 1000).toISOString() : null].filter(Boolean).map(v => new Date(v).getTime()).filter(Number.isFinite);
+      const latest = updateStamps.length ? new Date(Math.max(...updateStamps)) : new Date();
+      const latestLabel = latest.toLocaleString('tr-TR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
       const fmt4 = (n) => Number(n) > 0 ? Number(n).toLocaleString('tr-TR', { minimumFractionDigits: 4, maximumFractionDigits: 4 }) : '—';
       const fmt2 = (n) => Number(n) > 0 ? Number(n).toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '—';
       const fmt0 = (n) => Number(n) > 0 ? Number(n).toLocaleString('tr-TR', { maximumFractionDigits: 0 }) : '—';
@@ -12162,7 +12841,7 @@ input[type="date"]{min-width:0}
             <small>BTC / TRY</small>
           </div>
         </div>
-        <div class="fix-rate-meta">Kaynak: TCMB · Gold API · Coinbase · ${latest}</div>`;
+        <div class="fix-rate-meta">Kaynak: FXAPI · Gold API · CoinGecko · Son güncelleme: ${latestLabel}</div>`;
       const btn = document.querySelector('#fix-rate-refresh');
       if (btn) {
         btn.addEventListener('click', () => {
@@ -12454,7 +13133,7 @@ function premiumMonth(){const sel=$('#analytics-month');if(!sel||sel.dataset.ff1
 function debtCards(){$$('.debt-record-card').forEach(card=>{if(card.dataset.ff132Card==='1')return;card.dataset.ff132Card='1';card.tabIndex=0;card.setAttribute('role','button');const open=()=>card.querySelector('[data-open-debt]')?.click();card.addEventListener('click',e=>{if(!e.target.closest('button,a,input,select,textarea'))open()});card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('button,a,input,select,textarea')){e.preventDefault();open()}})})}
 function compactTx(){if($('#ff132-density'))return;const st=document.createElement('style');st.id='ff132-density';st.textContent='.transactions-page .transaction-item{min-height:46px!important;margin-bottom:5px!important}.transactions-page .transaction-swipe-content{min-height:46px!important;padding:6px 7px!important;gap:7px!important}.transactions-page .transaction-swipe-content .transaction-icon{width:30px!important;height:30px!important}.transactions-page .transaction-swipe-content .transaction-info h3{font-size:.72rem!important;line-height:1.05!important}.transactions-page .transaction-swipe-content .transaction-info span{font-size:.54rem!important;line-height:1.08!important}.transactions-page .transaction-swipe-content .transaction-amount{font-size:.68rem!important}';document.head.appendChild(st)}
 async function rate(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('rate');return r.json()}
-async function refreshRates(){const c=$('#ff-live-rates-content'),b=$('#ff-rate-refresh');if(!c)return;b?.classList.add('loading');c.innerHTML='<div class="ff-live-rate" style="grid-column:1/-1"><span>Kur verisi</span><strong>Yükleniyor…</strong></div>';try{const [usd,eur,gbp,gold]=await Promise.all([rate('https://api.frankfurter.dev/v2/rate/USD/TRY?providers=TCMB').catch(()=>rate('https://api.frankfurter.dev/v2/rate/USD/TRY')),rate('https://api.frankfurter.dev/v2/rate/EUR/TRY?providers=TCMB').catch(()=>rate('https://api.frankfurter.dev/v2/rate/EUR/TRY')),rate('https://api.frankfurter.dev/v2/rate/GBP/TRY?providers=TCMB').catch(()=>rate('https://api.frankfurter.dev/v2/rate/GBP/TRY')),rate('https://api.gold-api.com/price/XAU')]);const u=Number(usd.rate)||0,e=Number(eur.rate)||0,g=Number(gbp.rate)||0,x=Number(gold.price||gold.close||gold.value)||0;const gram=x&&u?(x/31.1034768)*u:0;const fmt=(n,d)=>Number(n).toLocaleString('tr-TR',{minimumFractionDigits:d,maximumFractionDigits:d});const date=usd.date||gold.updated_at||new Date().toISOString().slice(0,10);c.innerHTML=`<div class="ff-live-rate"><span>USD / TRY</span><strong>${fmt(u,4)} ₺</strong><small>${date}</small></div><div class="ff-live-rate"><span>EUR / TRY</span><strong>${fmt(e,4)} ₺</strong><small>${eur.date||date}</small></div><div class="ff-live-rate"><span>GBP / TRY</span><strong>${fmt(g,4)} ₺</strong><small>${gbp.date||date}</small></div><div class="ff-live-rate"><span>Gram Altın</span><strong>${gram?fmt(gram,2)+' ₺':'—'}</strong><small>Spot altın verisinden hesaplandı</small></div>`}catch(_){c.innerHTML='<div class="ff-live-rate" style="grid-column:1/-1"><span>Kur verisi</span><strong>Alınamadı</strong><small>İnterneti kontrol edip ↻ ile tekrar dene.</small></div>'}finally{b?.classList.remove('loading')}}
+async function refreshRates(){const c=$('#ff-live-rates-content'),b=$('#ff-rate-refresh');if(!c)return;b?.classList.add('loading');c.innerHTML='<div class="ff-live-rate" style="grid-column:1/-1"><span>Kur verisi</span><strong>Yükleniyor…</strong></div>';try{const [usd,eur,gbp,gold]=await Promise.all([rate('https://fxapi.app/api/USD/TRY.json'),rate('https://fxapi.app/api/EUR/TRY.json'),rate('https://fxapi.app/api/GBP/TRY.json'),rate('https://api.gold-api.com/price/XAU')]);const u=Number(usd.rate)||0,e=Number(eur.rate)||0,g=Number(gbp.rate)||0,x=Number(gold.price||gold.close||gold.value)||0;const gram=x&&u?(x/31.1034768)*u:0;const fmt=(n,d)=>Number(n).toLocaleString('tr-TR',{minimumFractionDigits:d,maximumFractionDigits:d});const date=usd.timestamp?new Date(usd.timestamp).toLocaleString('tr-TR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):new Date().toLocaleString('tr-TR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});c.innerHTML=`<div class="ff-live-rate"><span>USD / TRY</span><strong>${u?fmt(u,4)+' ₺':'—'}</strong><small>${date}</small></div><div class="ff-live-rate"><span>EUR / TRY</span><strong>${e?fmt(e,4)+' ₺':'—'}</strong><small>${eur.timestamp?new Date(eur.timestamp).toLocaleString('tr-TR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):date}</small></div><div class="ff-live-rate"><span>GBP / TRY</span><strong>${g?fmt(g,4)+' ₺':'—'}</strong><small>${gbp.timestamp?new Date(gbp.timestamp).toLocaleString('tr-TR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):date}</small></div><div class="ff-live-rate"><span>Gram Altın</span><strong>${gram?fmt(gram,2)+' ₺':'—'}</strong><small>Spot altın verisinden hesaplandı</small></div>`}catch(_){c.innerHTML='<div class="ff-live-rate" style="grid-column:1/-1"><span>Kur verisi</span><strong>Alınamadı</strong><small>İnterneti kontrol edip ↻ ile tekrar dene.</small></div>'}finally{b?.classList.remove('loading')}}
 function mountRates(){if($('#ff-live-rates')){refreshRates();return}const balance=$('.balance-section');if(!balance)return;const sec=document.createElement('section');sec.id='ff-live-rates';sec.className='dashboard-section ff-live-rates';sec.innerHTML='<div class="ff-live-rates-head"><div><h2>Döviz & Altın</h2><span>Güncel referans verileri</span></div><button type="button" class="ff-rate-refresh" id="ff-rate-refresh" aria-label="Kurları yenile">↻</button></div><div class="ff-live-rate-grid" id="ff-live-rates-content"></div>';balance.insertAdjacentElement('afterend',sec);$('#ff-rate-refresh')?.addEventListener('click',refreshRates);refreshRates()}
 function backupShare(provider){const data={version:'13.2',exportedAt:new Date().toISOString(),transactions:JSON.parse(localStorage.getItem('finance_transactions')||'[]'),goals:JSON.parse(localStorage.getItem('finance_goals')||'[]'),settings:JSON.parse(localStorage.getItem('finans_app_settings')||'{}'),accounts:JSON.parse(localStorage.getItem('finance_accounts')||'[]'),categories:JSON.parse(localStorage.getItem('finance_categories')||'[]'),debts:JSON.parse(localStorage.getItem('finance_debt_records_v2')||'[]')};const file=new File([JSON.stringify(data,null,2)],`fix-finans-13.2-${new Date().toISOString().slice(0,10)}.json`,{type:'application/json'});const toast=(msg,type)=>{if(typeof window.showToast==='function')window.showToast(msg,type)};if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){navigator.share({title:`Fix Finans 13.2 — ${provider} Yedek`,files:[file]}).then(()=>toast(`Yedek dosyası ${provider} için paylaşıldı.`,'success')).catch(()=>{})}else{const url=URL.createObjectURL(file),a=document.createElement('a');a.href=url;a.download=file.name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);toast(`Yedek dosyası indirildi. ${provider}'a manuel olarak yükleyebilirsin.`,'info')}}
 function backups(){$$('.cloud-backup-row').forEach(row=>{if(row.dataset.ff132==='1')return;row.dataset.ff132='1';row.addEventListener('click',e=>{e.preventDefault();e.stopImmediatePropagation();backupShare(row.dataset.cloudProvider||'Bulut')},{capture:true})})}
@@ -12477,8 +13156,882 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     document.documentElement.classList.remove('ff-splash-active');
     setTimeout(()=>splash.remove(),650);
   };
-  window.addEventListener('load',()=>setTimeout(finish,Math.max(0,3200-(performance.now()-start))),{once:true});
-  setTimeout(finish,4200);
+  window.addEventListener('load',()=>setTimeout(finish,Math.max(0,800-(performance.now()-start))),{once:true});
+  setTimeout(finish,800);
+})();
+</script>
+<style id="ff-feature-patches">
+/* === Fix Finans 13.2+ feature patches: color-scheme, font, scale === */
+:root, :root[data-theme="dark"] {
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+html[data-font-size="small"] { font-size: 14px; }
+html[data-font-size="normal"] { font-size: 16px; }
+html[data-font-size="large"] { font-size: 18px; }
+html[data-ui-scale="compact"] .app { --scale-factor: 0.92; }
+html[data-ui-scale="standard"] .app { --scale-factor: 1; }
+html[data-ui-scale="comfortable"] .app { --scale-factor: 1.08; }
+html[data-ui-scale="compact"] .page-section,
+html[data-ui-scale="compact"] .settings-card,
+html[data-ui-scale="compact"] .transaction-item,
+html[data-ui-scale="compact"] .balance-card { padding: calc(var(--pad, 14px) * 0.85); }
+html[data-ui-scale="comfortable"] .page-section,
+html[data-ui-scale="comfortable"] .settings-card { padding: calc(var(--pad, 14px) * 1.12); }
+/* Native select/option dark compatibility */
+select, option, input, textarea, button {
+  color-scheme: inherit;
+}
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] .setting-select,
+:root[data-theme="dark"] .category-filter-wrapper select,
+:root[data-theme="dark"] .analytics-period select,
+:root[data-theme="dark"] .transaction-sort select,
+:root[data-theme="dark"] .transaction-form select,
+:root[data-theme="dark"] .finance-modal select {
+  background: rgba(255,255,255,0.06) !important;
+  color: #eef2fa !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+:root[data-theme="dark"] option {
+  background: #1a2236 !important;
+  color: #eef2fa !important;
+}
+:root[data-theme="light"] select,
+:root[data-theme="light"] .setting-select {
+  background: rgba(15,23,42,0.04) !important;
+  color: #182033 !important;
+}
+:root[data-theme="light"] option {
+  background: #fff !important;
+  color: #182033 !important;
+}
+</style>
+
+<script id="ff-13-2-feature-update">
+(function(){
+  "use strict";
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+  const toast = (msg, type="info") => {
+    if (typeof window.showToast === "function") window.showToast(msg, type);
+    else console.log(type, msg);
+  };
+
+  function ensureUserId() {
+    try {
+      if (!window.appState || !window.appState.settings) return;
+      if (!appState.settings.userId) {
+        appState.settings.userId = "FF-" + Date.now().toString(36).toUpperCase() + Math.random().toString(36).slice(2,6).toUpperCase();
+        if (typeof saveSettings === "function") saveSettings();
+      }
+    } catch(e){}
+  }
+
+  window.applyFontAndScale = function applyFontAndScale() {
+    try {
+      const settings = (typeof appState !== "undefined" && appState.settings) ? appState.settings : {};
+      const font = ["small","normal","large"].includes(settings.fontSize) ? settings.fontSize : "normal";
+      const scale = ["compact","standard","comfortable"].includes(settings.uiScale) ? settings.uiScale : "standard";
+      document.documentElement.dataset.fontSize = font;
+      document.documentElement.dataset.uiScale = scale;
+      document.documentElement.style.setProperty("--ff-font-size-value", font === "small" ? "14px" : (font === "large" ? "18px" : "16px"));
+      const fontZoom = font === "small" ? 0.92 : (font === "large" ? 1.08 : 1);
+      const uiZoom = scale === "compact" ? 0.94 : (scale === "comfortable" ? 1.06 : 1);
+      const app = document.querySelector(".app");
+      if (app) {
+        app.style.zoom = String((fontZoom * uiZoom).toFixed(3));
+        app.style.setProperty("--ff-font-factor", String(fontZoom));
+      }
+    } catch(e) { console.error("Görünüm ayarı uygulanamadı:", e); }
+  };
+
+  // Patch applyTheme to also apply font/scale
+  const origApplyTheme = window.applyTheme;
+  if (typeof origApplyTheme === "function") {
+    window.applyTheme = function() {
+      origApplyTheme();
+      applyFontAndScale();
+    };
+  }
+
+  // ===== Profile expansion =====
+  function buildProfileEditor() {
+    const profilePage = $("#profile-page");
+    if (!profilePage || profilePage.dataset.ffProfileExpanded === "1") return;
+    profilePage.dataset.ffProfileExpanded = "1";
+
+    // Expand info list
+    const infoList = profilePage.querySelector(".profile-info-list");
+    if (infoList) {
+      infoList.innerHTML = `
+        <div class="profile-info-row"><span>Ad</span><strong id="profile-info-name">${escapeHtml((appState.settings && appState.settings.name) || "")}</strong></div>
+        <div class="profile-info-row"><span>Soyad</span><strong id="profile-info-surname">${escapeHtml((appState.settings && appState.settings.surname) || "—")}</strong></div>
+        <div class="profile-info-row"><span>Telefon</span><strong id="profile-info-phone">${escapeHtml((appState.settings && appState.settings.phone) || "—")}</strong></div>
+        <div class="profile-info-row"><span>E-posta</span><strong id="profile-info-email">${escapeHtml((appState.settings && appState.settings.email) || "—")}</strong></div>
+        <div class="profile-info-row"><span>Cinsiyet</span><strong id="profile-info-gender">${genderLabel((appState.settings && appState.settings.gender) || "")}</strong></div>
+        <div class="profile-info-row"><span>Kullanıcı ID</span><strong id="profile-info-id">${escapeHtml((appState.settings && appState.settings.userId) || "—")}</strong></div>
+        <div class="profile-info-row"><span>Google</span><strong id="profile-info-google">Bağlı değil</strong></div>
+      `;
+    }
+
+    // Avatar click for photo
+    const avatar = $("#profile-avatar-large");
+    if (avatar && !avatar.dataset.ffBound) {
+      avatar.dataset.ffBound = "1";
+      avatar.style.cursor = "pointer";
+      avatar.title = "Profil fotoğrafı değiştir";
+      avatar.addEventListener("click", () => {
+        const input = document.createElement("input");
+        input.type = "file";
+        input.accept = "image/*";
+        input.onchange = () => {
+          const file = input.files && input.files[0];
+          if (!file) return;
+          if (file.size > 1.5 * 1024 * 1024) { toast("Fotoğraf 1.5MB'dan küçük olmalı.", "error"); return; }
+          const reader = new FileReader();
+          reader.onload = () => {
+            appState.settings.avatar = reader.result;
+            if (typeof saveSettings === "function") saveSettings();
+            renderProfileAvatar();
+            toast("Profil fotoğrafı güncellendi.", "success");
+          };
+          reader.readAsDataURL(file);
+        };
+        input.click();
+      });
+    }
+
+    // Edit button opens full form
+    const editBtn = $("#profile-edit-button");
+    if (editBtn) {
+      editBtn.onclick = null;
+      editBtn.addEventListener("click", openFullProfileEditor);
+    }
+
+    // Logout button
+    if (!profilePage.querySelector("#ff-logout-btn")) {
+      const logoutCard = document.createElement("article");
+      logoutCard.className = "settings-card";
+      logoutCard.innerHTML = `
+        <button type="button" class="settings-action danger-action" id="ff-logout-btn">
+          <span class="settings-action-icon">⎋</span>
+          <span class="settings-action-content"><strong>Oturumu Kapat</strong><small>Yerel oturumu temizler (veriler silinmez).</small></span>
+          <span>→</span>
+        </button>
+      `;
+      profilePage.appendChild(logoutCard);
+      $("#ff-logout-btn").addEventListener("click", () => {
+        if (!confirm("Oturumu kapatmak istediğine emin misin? Verilerin silinmez, sadece profil oturumu sıfırlanır.")) return;
+        // Soft logout: clear name to default? or just toast
+        toast("Oturum kapatıldı. Uygulama yerel çalışmaya devam ediyor.", "info");
+      });
+    }
+  }
+
+  function genderLabel(g) {
+    return { male: "Erkek", female: "Kadın", other: "Diğer" }[g] || "—";
+  }
+
+  function escapeHtml(str) {
+    return String(str || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+  }
+
+  function renderProfileAvatar() {
+    const avatar = $("#profile-avatar-large");
+    if (!avatar) return;
+    const s = (appState && appState.settings) || {};
+    if (s.avatar) {
+      avatar.style.backgroundImage = `url(${s.avatar})`;
+      avatar.style.backgroundSize = "cover";
+      avatar.style.backgroundPosition = "center";
+      avatar.textContent = "";
+    } else {
+      avatar.style.backgroundImage = "";
+      const name = (s.name || "K").trim();
+      avatar.textContent = name.charAt(0).toUpperCase();
+    }
+    // Update display name
+    const nameEl = $("#profile-name");
+    if (nameEl) nameEl.textContent = [s.name, s.surname].filter(Boolean).join(" ") || "Kullanıcı";
+    const infoName = $("#profile-info-name");
+    if (infoName) infoName.textContent = s.name || "—";
+    const infoSur = $("#profile-info-surname");
+    if (infoSur) infoSur.textContent = s.surname || "—";
+    const infoPh = $("#profile-info-phone");
+    if (infoPh) infoPh.textContent = s.phone || "—";
+    const infoEm = $("#profile-info-email");
+    if (infoEm) infoEm.textContent = s.email || "—";
+    const infoG = $("#profile-info-gender");
+    if (infoG) infoG.textContent = genderLabel(s.gender);
+    const infoId = $("#profile-info-id");
+    if (infoId) infoId.textContent = s.userId || "—";
+  }
+
+  function openFullProfileEditor() {
+    const s = (appState && appState.settings) || {};
+    const overlay = document.createElement("div");
+    overlay.className = "finance-modal";
+    overlay.style.display = "flex";
+    overlay.innerHTML = `
+      <div class="finance-modal-content" style="max-width:420px;width:94%;max-height:90vh;overflow:auto;">
+        <div class="premium-input-head">
+          <div><span class="section-label">Profil</span><h2>Profili Düzenle</h2></div>
+          <button type="button" class="icon-button" id="ff-profile-close">×</button>
+        </div>
+        <div class="premium-input-form">
+          <label>Ad</label>
+          <input type="text" id="ff-p-name" value="${escapeHtml(s.name||"")}" maxlength="60">
+          <label>Soyad</label>
+          <input type="text" id="ff-p-surname" value="${escapeHtml(s.surname||"")}" maxlength="60">
+          <label>Telefon</label>
+          <input type="tel" id="ff-p-phone" value="${escapeHtml(s.phone||"")}" maxlength="30">
+          <label>E-posta</label>
+          <input type="email" id="ff-p-email" value="${escapeHtml(s.email||"")}" maxlength="80">
+          <label>Cinsiyet</label>
+          <select id="ff-p-gender">
+            <option value="">Belirtilmemiş</option>
+            <option value="male" ${s.gender==="male"?"selected":""}>Erkek</option>
+            <option value="female" ${s.gender==="female"?"selected":""}>Kadın</option>
+            <option value="other" ${s.gender==="other"?"selected":""}>Diğer</option>
+          </select>
+        </div>
+        <div class="premium-input-actions" style="margin-top:12px;">
+          <button type="button" class="secondary-button" id="ff-profile-cancel">İptal</button>
+          <button type="button" class="primary-button" id="ff-profile-save">Kaydet</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+    document.body.style.overflow = "hidden";
+    const close = () => { overlay.remove(); document.body.style.overflow = ""; };
+    $("#ff-profile-close", overlay).onclick = close;
+    $("#ff-profile-cancel", overlay).onclick = close;
+    $("#ff-profile-save", overlay).onclick = () => {
+      appState.settings.name = ($("#ff-p-name", overlay).value || "").trim().slice(0,60) || "Kullanıcı";
+      appState.settings.surname = ($("#ff-p-surname", overlay).value || "").trim().slice(0,60);
+      appState.settings.phone = ($("#ff-p-phone", overlay).value || "").trim().slice(0,30);
+      appState.settings.email = ($("#ff-p-email", overlay).value || "").trim().slice(0,80);
+      appState.settings.gender = $("#ff-p-gender", overlay).value || "";
+      if (typeof saveSettings === "function") saveSettings();
+      renderProfileAvatar();
+      if (typeof renderSettings === "function") renderSettings();
+      toast("Profil güncellendi.", "success");
+      close();
+    };
+  }
+
+  // ===== Font size & UI scale in settings =====
+  function injectAppearanceSettings() {
+    const settingsPage = $("#settings-page");
+    if (!settingsPage || settingsPage.dataset.ffAppearance === "1") return;
+    settingsPage.dataset.ffAppearance = "1";
+
+    const cards = settingsPage.querySelectorAll(".settings-card");
+    const themeCard = Array.from(cards).find(c => c.querySelector(".theme-selector"));
+    if (!themeCard || document.querySelector("#ff-appearance-card-static")) {
+      settingsPage.dataset.ffAppearance = "1";
+      return;
+    }
+
+    const appearance = document.createElement("article");
+    appearance.className = "settings-card";
+    appearance.innerHTML = `
+      <div class="settings-card-header">
+        <span class="section-label">Görünüm</span>
+        <h2>Yazı Boyutu & Arayüz</h2>
+      </div>
+      <div class="setting-row" style="flex-direction:column;align-items:stretch;gap:10px;">
+        <div class="setting-info"><strong>Yazı Boyutu</strong><span>Küçük / Normal / Büyük</span></div>
+        <div class="theme-selector" id="ff-font-size-selector" style="grid-template-columns:repeat(3,1fr);">
+          <button type="button" class="theme-option" data-font="small"><strong>Küçük</strong></button>
+          <button type="button" class="theme-option" data-font="normal"><strong>Normal</strong></button>
+          <button type="button" class="theme-option" data-font="large"><strong>Büyük</strong></button>
+        </div>
+      </div>
+      <div class="setting-row" style="flex-direction:column;align-items:stretch;gap:10px;margin-top:14px;">
+        <div class="setting-info"><strong>Arayüz Ölçeği</strong><span>Kompakt / Standart / Rahat</span></div>
+        <div class="theme-selector" id="ff-ui-scale-selector" style="grid-template-columns:repeat(3,1fr);">
+          <button type="button" class="theme-option" data-scale="compact"><strong>Kompakt</strong></button>
+          <button type="button" class="theme-option" data-scale="standard"><strong>Standart</strong></button>
+          <button type="button" class="theme-option" data-scale="comfortable"><strong>Rahat</strong></button>
+        </div>
+      </div>
+    `;
+    themeCard.after(appearance);
+
+    const syncActive = () => {
+      const s = (appState && appState.settings) || {};
+      $$("#ff-font-size-selector .theme-option").forEach(b => {
+        b.classList.toggle("active", b.dataset.font === (s.fontSize || "normal"));
+      });
+      $$("#ff-ui-scale-selector .theme-option").forEach(b => {
+        b.classList.toggle("active", b.dataset.scale === (s.uiScale || "standard"));
+      });
+    };
+    syncActive();
+
+    document.addEventListener("click", (event) => {
+      const fontBtn = event.target.closest && event.target.closest("#ff-font-size-selector .theme-option");
+      const scaleBtn = event.target.closest && event.target.closest("#ff-ui-scale-selector .theme-option");
+      if (!fontBtn && !scaleBtn) return;
+      if (fontBtn) appState.settings.fontSize = fontBtn.dataset.font;
+      if (scaleBtn) appState.settings.uiScale = scaleBtn.dataset.scale;
+      if (typeof saveSettings === "function") saveSettings();
+      window.applyFontAndScale();
+      syncActive();
+      toast(fontBtn ? "Yazı boyutu güncellendi." : "Arayüz ölçeği güncellendi.", "success");
+    });
+  }
+
+  // ===== Enhanced Backup page section =====
+  function enhanceBackupSection() {
+    const settingsPage = $("#settings-page");
+    if (!settingsPage) return;
+    const dataCard = Array.from(settingsPage.querySelectorAll(".settings-card")).find(c => c.querySelector("#export-data-button"));
+    if (!dataCard || dataCard.dataset.ffBackupEnhanced === "1") return;
+    dataCard.dataset.ffBackupEnhanced = "1";
+
+    // Add auto backup + now + delete
+    const extra = document.createElement("div");
+    extra.innerHTML = `
+      <button type="button" class="settings-action" id="ff-backup-now">
+        <span class="settings-action-icon">☁</span>
+        <span class="settings-action-content"><strong>Şimdi Yedekle</strong><small>Yerel otomatik yedek oluştur.</small></span>
+        <span>→</span>
+      </button>
+      <button type="button" class="settings-action" id="ff-backup-list">
+        <span class="settings-action-icon">☰</span>
+        <span class="settings-action-content"><strong>Yedekleri Yönet</strong><small>Yerel yedekleri görüntüle / sil / geri yükle.</small></span>
+        <span>→</span>
+      </button>
+    `;
+    const exportBtn = $("#export-data-button");
+    if (exportBtn) exportBtn.before(...extra.children);
+
+    const STORAGE_KEY = "ff_local_backups_v1";
+    function getBackups() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); } catch { return []; }
+    }
+    function setBackups(list) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list.slice(0, 20)));
+    }
+    function createBackup(label) {
+      const data = {
+        version: "13.2",
+        label: label || ("Yedek " + new Date().toLocaleString("tr-TR")),
+        createdAt: new Date().toISOString(),
+        transactions: JSON.parse(localStorage.getItem("finance_transactions") || "[]"),
+        goals: JSON.parse(localStorage.getItem("finance_goals") || "[]"),
+        settings: JSON.parse(localStorage.getItem("finans_app_settings") || "{}"),
+        accounts: JSON.parse(localStorage.getItem("finance_accounts") || "[]"),
+        categories: JSON.parse(localStorage.getItem("finance_categories") || "[]"),
+        debts: JSON.parse(localStorage.getItem("finance_debt_records_v2") || "[]"),
+        reminders: JSON.parse(localStorage.getItem("ff_payment_reminders") || "[]")
+      };
+      const list = getBackups();
+      list.unshift({ id: "bk-" + Date.now(), ...data });
+      setBackups(list);
+      return list[0];
+    }
+
+    $("#ff-backup-now")?.addEventListener("click", () => {
+      createBackup();
+      toast("Yerel yedek oluşturuldu.", "success");
+    });
+
+    $("#ff-backup-list")?.addEventListener("click", () => {
+      const list = getBackups();
+      const overlay = document.createElement("div");
+      overlay.className = "finance-modal";
+      overlay.style.display = "flex";
+      overlay.innerHTML = `
+        <div class="finance-modal-content" style="max-width:440px;width:94%;max-height:88vh;overflow:auto;">
+          <div class="premium-input-head">
+            <div><span class="section-label">Veri</span><h2>Yerel Yedekler</h2></div>
+            <button type="button" class="icon-button" id="ff-bk-close">×</button>
+          </div>
+          <div id="ff-bk-list" style="display:grid;gap:8px;margin-top:10px;"></div>
+          <p style="font-size:.7rem;color:var(--text-secondary);margin-top:12px;">En fazla 20 yedek saklanır. Otomatik yedekler uygulama açılışında oluşturulabilir.</p>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+      document.body.style.overflow = "hidden";
+      const close = () => { overlay.remove(); document.body.style.overflow = ""; };
+      $("#ff-bk-close", overlay).onclick = close;
+
+      const container = $("#ff-bk-list", overlay);
+      if (!list.length) {
+        container.innerHTML = `<div class="empty-state" style="padding:20px;"><p>Henüz yedek yok.</p></div>`;
+      } else {
+        list.forEach(bk => {
+          const row = document.createElement("div");
+          row.className = "management-row settings-action";
+          row.style.cssText = "display:flex;align-items:center;gap:8px;padding:10px;border-radius:12px;background:rgba(255,255,255,.04);";
+          row.innerHTML = `
+            <div style="flex:1;min-width:0;">
+              <strong style="font-size:.78rem;">${escapeHtml(bk.label || "Yedek")}</strong>
+              <small style="display:block;color:var(--text-secondary);font-size:.62rem;">${new Date(bk.createdAt).toLocaleString("tr-TR")}</small>
+            </div>
+            <button type="button" class="mini-add-button" data-act="restore" title="Geri yükle">↺</button>
+            <button type="button" class="mini-add-button" data-act="delete" title="Sil" style="color:#f87171;">×</button>
+          `;
+          row.querySelector('[data-act="restore"]').onclick = () => {
+            if (!confirm("Bu yedekten geri yüklemek mevcut verilerin üzerine yazacak. Devam?")) return;
+            try {
+              if (bk.transactions) localStorage.setItem("finance_transactions", JSON.stringify(bk.transactions));
+              if (bk.goals) localStorage.setItem("finance_goals", JSON.stringify(bk.goals));
+              if (bk.settings) localStorage.setItem("finans_app_settings", JSON.stringify(bk.settings));
+              if (bk.accounts) localStorage.setItem("finance_accounts", JSON.stringify(bk.accounts));
+              if (bk.categories) localStorage.setItem("finance_categories", JSON.stringify(bk.categories));
+              if (bk.debts) localStorage.setItem("finance_debt_records_v2", JSON.stringify(bk.debts));
+              if (bk.reminders) localStorage.setItem("ff_payment_reminders", JSON.stringify(bk.reminders));
+              toast("Yedek geri yüklendi. Sayfa yenileniyor…", "success");
+              setTimeout(() => location.reload(), 800);
+            } catch(e) { toast("Geri yükleme hatası.", "error"); }
+          };
+          row.querySelector('[data-act="delete"]').onclick = () => {
+            if (!confirm("Bu yedeği silmek istediğine emin misin?")) return;
+            setBackups(getBackups().filter(x => x.id !== bk.id));
+            row.remove();
+            toast("Yedek silindi.", "info");
+          };
+          container.appendChild(row);
+        });
+      }
+    });
+
+    // Auto local backup on load (once per day)
+    try {
+      const last = localStorage.getItem("ff_last_auto_backup");
+      const today = new Date().toISOString().slice(0,10);
+      if (last !== today) {
+        createBackup("Otomatik yedek " + today);
+        localStorage.setItem("ff_last_auto_backup", today);
+      }
+    } catch(e){}
+  }
+
+  // ===== Payment / Installment Reminders =====
+  function initReminders() {
+    const REM_KEY = "ff_payment_reminders";
+    function getReminders() {
+      try { const v = JSON.parse(localStorage.getItem(REM_KEY) || "[]"); return Array.isArray(v) ? v : []; } catch { return []; }
+    }
+    function saveReminders(list) { localStorage.setItem(REM_KEY, JSON.stringify(list)); }
+
+    function getNextPaymentDate(day) {
+      const now = new Date();
+      const safeDay = Math.min(28, Math.max(1, Number(day) || 1));
+      let due = new Date(now.getFullYear(), now.getMonth(), safeDay, 12, 0, 0, 0);
+      if (due < new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0, 0, 0)) {
+        due = new Date(now.getFullYear(), now.getMonth() + 1, safeDay, 12, 0, 0, 0);
+      }
+      return due;
+    }
+    function getDueInfo(day) {
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0, 0, 0);
+      const due = getNextPaymentDate(day);
+      const days = Math.round((due - today) / 86400000);
+      const label = days === 0 ? "Bugün" : days === 1 ? "Yarın" : `${days} gün kaldı`;
+      return { due, days, label };
+    }
+    function formatDueDate(date) {
+      return date.toLocaleDateString("tr-TR", { day: "2-digit", month: "2-digit", year: "numeric" });
+    }
+    function formatTL(value) {
+      const n = Number(value);
+      return Number.isFinite(n) ? n.toLocaleString("tr-TR", { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + " ₺" : "—";
+    }
+    function remainingAmount(item) {
+      if (item.amount == null || item.amount === "") return null;
+      return Math.max(0, Number(item.amount) - Number(item.paid || 0));
+    }
+
+    const settingsPage = document.getElementById("settings-page");
+    if (!settingsPage) return;
+
+    // Ensure card exists in settings
+    if (!settingsPage.querySelector("#ff-reminders-card")) {
+      const card = document.createElement("article");
+      card.className = "settings-card";
+      card.id = "ff-reminders-card";
+      card.innerHTML = `
+        <div class="settings-card-header">
+          <span class="section-label">Hatırlatmalar</span>
+          <h2>Ödeme / Taksit Hatırlatmaları</h2>
+        </div>
+        <p class="management-description">Aylık ödemelerini takip et, kalan tutarı ve yaklaşan ödeme tarihini gör.</p>
+        <div id="ff-reminder-list" style="display:grid;gap:10px;margin:10px 0;"></div>
+        <button type="button" class="settings-action" id="ff-add-reminder">
+          <span class="settings-action-icon">+</span>
+          <span class="settings-action-content"><strong>Yeni Ödeme / Taksit</strong><small>Ödeme adı, gün, tutar ve ödenen tutarı ekle.</small></span>
+          <span>→</span>
+        </button>
+      `;
+      const dataCard = Array.from(settingsPage.querySelectorAll(".settings-card")).find(c => c.querySelector("#export-data-button"));
+      if (dataCard) dataCard.before(card); else settingsPage.appendChild(card);
+    }
+
+    function renderReminderList() {
+      const list = getReminders();
+      const box = document.getElementById("ff-reminder-list");
+      if (!box) return;
+      if (!list.length) {
+        box.innerHTML = `<div style="font-size:.72rem;color:var(--text-secondary);padding:8px 0;">Henüz ödeme veya taksit eklenmedi.</div>`;
+        return;
+      }
+      box.innerHTML = list.map(r => {
+        const info = getDueInfo(r.day);
+        const remaining = remainingAmount(r);
+        const isOn = r.enabled !== false;
+        const statusClass = info.days <= 3 ? "color:#f59e0b;" : "color:var(--text-secondary);";
+        return `
+        <div class="management-row ff-reminder-row" style="display:flex;align-items:center;gap:10px;padding:11px;border-radius:14px;background:rgba(255,255,255,.04);" data-id="${escapeHtml(r.id)}">
+          <div style="flex:1;min-width:0;">
+            <strong style="font-size:.8rem;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(r.name)}</strong>
+            <small style="display:block;color:var(--text-secondary);font-size:.63rem;margin-top:3px;">Her ayın ${r.day}. günü • Sonraki: ${formatDueDate(info.due)}</small>
+            <small style="display:block;${statusClass}font-size:.66rem;margin-top:3px;font-weight:700;">🔔 ${info.label}${isOn ? "" : " • Hatırlatma kapalı"}</small>
+            ${r.amount != null && r.amount !== "" ? `<small style="display:block;color:var(--text-secondary);font-size:.63rem;margin-top:3px;">Ödenen: ${formatTL(r.paid || 0)} • Kalan: ${formatTL(remaining)}</small>` : ""}
+          </div>
+          <button type="button" class="mini-add-button" data-act="toggle" title="Hatırlatmayı aç/kapat" aria-label="Hatırlatmayı aç/kapat">${isOn ? "●" : "○"}</button>
+          <button type="button" class="mini-add-button" data-act="edit" title="Düzenle" aria-label="Düzenle">✎</button>
+          <button type="button" class="mini-add-button" data-act="del" title="Sil" aria-label="Sil" style="color:#f87171;">×</button>
+        </div>`;
+      }).join("");
+    }
+
+    function openReminderEditor(existing) {
+      // Close any previous reminder editor
+      document.querySelectorAll(".ff-reminder-editor-modal").forEach(el => el.remove());
+      document.body.style.overflow = "";
+
+      const isEdit = !!existing;
+      const overlay = document.createElement("div");
+      overlay.className = "finance-modal ff-reminder-editor-modal";
+      overlay.style.cssText = "display:flex;z-index:9999;position:fixed;inset:0;";
+      overlay.setAttribute("role", "dialog");
+      overlay.setAttribute("aria-modal", "true");
+      overlay.innerHTML = `
+        <div class="finance-modal-content" style="max-width:400px;width:94%;position:relative;z-index:1;" onclick="event.stopPropagation()">
+          <div class="premium-input-head">
+            <div><span class="section-label">Ödeme / Taksit</span><h2>${isEdit ? "Düzenle" : "Yeni Ödeme / Taksit"}</h2></div>
+            <button type="button" class="icon-button" id="ff-rem-close" aria-label="Kapat">×</button>
+          </div>
+          <div class="premium-input-form">
+            <label for="ff-rem-name">Ödeme adı</label>
+            <input type="text" id="ff-rem-name" value="${escapeHtml(existing?.name||"")}" maxlength="60" placeholder="Kredi kartı, kira…">
+            <label for="ff-rem-day">Her ayın günü (1-28)</label>
+            <input type="number" id="ff-rem-day" min="1" max="28" inputmode="numeric" value="${existing?.day||1}">
+            <label for="ff-rem-amount">Tutar (opsiyonel)</label>
+            <input type="number" id="ff-rem-amount" step="0.01" min="0" inputmode="decimal" value="${existing?.amount ?? ""}" placeholder="Örn. 2500">
+            <label for="ff-rem-paid">Ödenen tutar (opsiyonel)</label>
+            <input type="number" id="ff-rem-paid" step="0.01" min="0" inputmode="decimal" value="${existing?.paid ?? ""}" placeholder="Örn. 1000">
+            <label style="display:flex;align-items:center;gap:8px;margin-top:8px;cursor:pointer;">
+              <input type="checkbox" id="ff-rem-enabled" ${existing?.enabled !== false ? "checked" : ""} style="width:auto;min-height:auto;">
+              <span>Yaklaşan ödeme hatırlatmasını aç</span>
+            </label>
+            <div id="ff-rem-preview" style="margin-top:10px;padding:10px;border-radius:12px;background:rgba(255,255,255,.05);font-size:.68rem;color:var(--text-secondary);"></div>
+          </div>
+          <div class="premium-input-actions" style="margin-top:12px;">
+            <button type="button" class="secondary-button" id="ff-rem-cancel">İptal</button>
+            <button type="button" class="primary-button" id="ff-rem-save">Kaydet</button>
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+      document.body.style.overflow = "hidden";
+
+      const close = () => {
+        overlay.remove();
+        document.body.style.overflow = "";
+      };
+
+      // Backdrop click closes
+      overlay.addEventListener("click", (e) => { if (e.target === overlay) close(); });
+
+      const closeBtn = overlay.querySelector("#ff-rem-close");
+      const cancelBtn = overlay.querySelector("#ff-rem-cancel");
+      const saveBtn = overlay.querySelector("#ff-rem-save");
+      if (closeBtn) closeBtn.onclick = close;
+      if (cancelBtn) cancelBtn.onclick = close;
+
+      const updatePreview = () => {
+        const dayEl = overlay.querySelector("#ff-rem-day");
+        const amountEl = overlay.querySelector("#ff-rem-amount");
+        const paidEl = overlay.querySelector("#ff-rem-paid");
+        const previewEl = overlay.querySelector("#ff-rem-preview");
+        if (!previewEl) return;
+        const day = Math.min(28, Math.max(1, parseInt(dayEl && dayEl.value, 10) || 1));
+        const info = getDueInfo(day);
+        const amount = parseFloat(amountEl && amountEl.value);
+        const paid = parseFloat(paidEl && paidEl.value) || 0;
+        const remaining = Number.isFinite(amount) ? Math.max(0, amount - paid) : null;
+        previewEl.innerHTML = `📅 Bir sonraki ödeme: <strong>${formatDueDate(info.due)}</strong> • ${info.label}${remaining !== null ? `<br>📊 Ödenen: <strong>${formatTL(paid)}</strong> • Kalan: <strong>${formatTL(remaining)}</strong>` : ""}`;
+      };
+      ["#ff-rem-day","#ff-rem-amount","#ff-rem-paid"].forEach(sel => {
+        const el = overlay.querySelector(sel);
+        if (el) el.addEventListener("input", updatePreview);
+      });
+      updatePreview();
+
+      if (saveBtn) {
+        saveBtn.onclick = () => {
+          const nameEl = overlay.querySelector("#ff-rem-name");
+          const dayEl = overlay.querySelector("#ff-rem-day");
+          const amountEl = overlay.querySelector("#ff-rem-amount");
+          const paidEl = overlay.querySelector("#ff-rem-paid");
+          const enabledEl = overlay.querySelector("#ff-rem-enabled");
+          const name = ((nameEl && nameEl.value) || "").trim();
+          const day = Math.min(28, Math.max(1, parseInt(dayEl && dayEl.value, 10) || 1));
+          const rawAmount = amountEl ? amountEl.value : "";
+          const rawPaid = paidEl ? paidEl.value : "";
+          const amount = rawAmount === "" ? null : Math.max(0, parseFloat(rawAmount) || 0);
+          const paid = rawPaid === "" ? null : Math.max(0, parseFloat(rawPaid) || 0);
+          const enabled = enabledEl ? !!enabledEl.checked : true;
+          if (!name) { toast("Ödeme adı gerekli.", "error"); return; }
+          const current = getReminders();
+          if (isEdit) {
+            const item = current.find(x => x.id === existing.id);
+            if (item) Object.assign(item, { name, day, amount, paid, enabled });
+          } else {
+            current.push({ id: "rem-" + Date.now(), name, day, amount, paid, enabled });
+          }
+          saveReminders(current);
+          renderReminderList();
+          toast("Ödeme hatırlatması kaydedildi.", "success");
+          close();
+        };
+      }
+
+      // Focus name field for better UX
+      setTimeout(() => {
+        const nameEl = overlay.querySelector("#ff-rem-name");
+        if (nameEl) try { nameEl.focus(); } catch(e){}
+      }, 80);
+    }
+
+    // Event delegation — single listener on settings page
+    if (!settingsPage.dataset.ffRemindersBound) {
+      settingsPage.dataset.ffRemindersBound = "1";
+      settingsPage.addEventListener("click", (e) => {
+        const addBtn = e.target.closest && e.target.closest("#ff-add-reminder");
+        if (addBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          openReminderEditor(null);
+          return;
+        }
+        const actBtn = e.target.closest && e.target.closest("#ff-reminder-list [data-act]");
+        if (!actBtn) return;
+        e.preventDefault();
+        e.stopPropagation();
+        const row = actBtn.closest("[data-id]");
+        const id = row && row.dataset.id;
+        if (!id) return;
+        const current = getReminders();
+        const item = current.find(x => x.id === id);
+        if (!item) return;
+        const act = actBtn.dataset.act;
+        if (act === "toggle") {
+          item.enabled = !(item.enabled !== false);
+          saveReminders(current);
+          renderReminderList();
+          toast(item.enabled !== false ? "Ödeme hatırlatması açıldı." : "Ödeme hatırlatması kapatıldı.", "info");
+        } else if (act === "del") {
+          if (!confirm("Bu ödeme/taksit hatırlatması silinsin mi?")) return;
+          saveReminders(current.filter(x => x.id !== id));
+          renderReminderList();
+          toast("Hatırlatma silindi.", "success");
+        } else if (act === "edit") {
+          openReminderEditor(item);
+        }
+      });
+    }
+
+    // Direct binding (belt & suspenders) — always re-assign onclick
+    const addReminderBtn = document.getElementById("ff-add-reminder");
+    if (addReminderBtn) {
+      addReminderBtn.onclick = function (e) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        openReminderEditor(null);
+        return false;
+      };
+    }
+
+    // Expose for debugging / external calls
+    window.openFfReminderEditor = openReminderEditor;
+    window.renderFfReminderList = renderReminderList;
+
+    renderReminderList();
+
+    // App açılışında yaklaşan ödemeleri bildir (aynı ödeme aynı gün içinde bir kez)
+    if (!window.__ffPaymentAlertsDone) {
+      window.__ffPaymentAlertsDone = true;
+      const todayKey = new Date().toISOString().slice(0,10);
+      const alerted = (() => { try { return JSON.parse(sessionStorage.getItem("ff_payment_alerts") || "{}"); } catch { return {}; } })();
+      getReminders().filter(r => r.enabled !== false).forEach(r => {
+        const info = getDueInfo(r.day);
+        if (info.days <= 7) {
+          const key = `${todayKey}:${r.id}:${info.due.toISOString().slice(0,10)}`;
+          if (!alerted[key]) {
+            setTimeout(() => toast(`🔔 ${r.name}: ${info.label}. Sonraki ödeme ${formatDueDate(info.due)}.`, "info"), 700);
+            alerted[key] = true;
+          }
+        }
+      });
+      try { sessionStorage.setItem("ff_payment_alerts", JSON.stringify(alerted)); } catch {}
+    }
+  }
+
+  // ===== Boot =====
+  function bootFeatures() {
+    const safe = (fn, label) => {
+      try { fn(); } catch (err) {
+        console.warn("[FixFinans] " + label + " hata:", err);
+      }
+    };
+    safe(ensureUserId, "ensureUserId");
+    safe(applyFontAndScale, "applyFontAndScale");
+    safe(buildProfileEditor, "buildProfileEditor");
+    safe(renderProfileAvatar, "renderProfileAvatar");
+    safe(injectAppearanceSettings, "injectAppearanceSettings");
+    safe(enhanceBackupSection, "enhanceBackupSection");
+    safe(initReminders, "initReminders");
+
+    // Re-apply on navigation to profile/settings (observer stays active)
+    if (!window.__ffBootObserver) {
+      window.__ffBootObserver = new MutationObserver(() => {
+        if ($("#profile-page.active, #profile-page[style*='block']")) {
+          safe(buildProfileEditor, "buildProfileEditor");
+          safe(renderProfileAvatar, "renderProfileAvatar");
+        }
+        if ($("#settings-page.active, #settings-page[style*='block']")) {
+          safe(injectAppearanceSettings, "injectAppearanceSettings");
+          safe(enhanceBackupSection, "enhanceBackupSection");
+          safe(initReminders, "initReminders");
+        }
+      });
+      window.__ffBootObserver.observe(document.body, {
+        subtree: true,
+        attributes: true,
+        attributeFilter: ["class", "style"]
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => setTimeout(bootFeatures, 400));
+  } else {
+    setTimeout(bootFeatures, 400);
+  }
+
+  // Also after existing boot
+  window.addEventListener("load", () => setTimeout(bootFeatures, 900));
+})();
+</script>
+
+
+<script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-auth-compat.js"></script>
+<script id="fix-finans-google-auth">
+(function(){
+  "use strict";
+  const firebaseConfig={
+    apiKey:"AIzaSyCJOSOG4mopGFngR7TeBMYVmDNLmLpbiiw",
+    authDomain:"fix-finans.firebaseapp.com",
+    projectId:"fix-finans",
+    storageBucket:"fix-finans.firebasestorage.app",
+    messagingSenderId:"399902784452",
+    appId:"1:399902784452:web:f74512f90a538794c68291",
+    measurementId:"G-893J1N1MC1"
+  };
+  const CARD_ID="ff-google-auth-card";
+  let auth=null;
+  let persistenceReady=null;
+
+  function toast(message,type){try{if(typeof window.showToast==="function")window.showToast(message,type||"info");}catch(_){} }
+  function settings(){try{const v=JSON.parse(localStorage.getItem("finans_app_settings")||"{}");return v&&typeof v==="object"?v:{};}catch(_){return {};}}
+  function saveGoogleUser(user){
+    if(!user)return;
+    const s=settings();
+    s.googleUid=user.uid||""; s.googleEmail=user.email||""; s.googleDisplayName=user.displayName||""; s.googlePhotoURL=user.photoURL||"";
+    if(!s.email&&user.email)s.email=user.email;
+    if((!s.name||s.name==="Kullanıcı")&&user.displayName){const p=user.displayName.trim().split(/\s+/);s.name=p.shift()||s.name;s.surname=p.join(" ")||s.surname||"";}
+    try{localStorage.setItem("finans_app_settings",JSON.stringify(s));}catch(_){ }
+  }
+  function clearGoogleUser(){const s=settings();delete s.googleUid;delete s.googleEmail;delete s.googleDisplayName;delete s.googlePhotoURL;try{localStorage.setItem("finans_app_settings",JSON.stringify(s));}catch(_){} }
+
+  function buildCard(){
+    const profile=document.querySelector("#profile-page");
+    if(!profile||document.getElementById(CARD_ID))return;
+    const card=document.createElement("article");
+    card.className="settings-card ff-google-auth-card";card.id=CARD_ID;
+    card.innerHTML=`<div class="settings-card-header"><span class="section-label">Hesap Bağlantısı</span><h2>Google Hesabı</h2><p class="management-description">Fix Finans hesabını Google hesabınla güvenli şekilde bağla.</p></div><div class="ff-google-status"><div class="ff-google-avatar" id="ff-google-avatar">G</div><div class="ff-google-copy"><strong id="ff-google-title">Google hesabı bağlı değil</strong><span id="ff-google-email">Verilerini yerel olarak kullanmaya devam edebilirsin.</span></div></div><div class="ff-google-actions"><button type="button" class="ff-google-button" id="ff-google-connect">G Google ile Bağlan</button><button type="button" class="ff-google-button secondary" id="ff-google-signout" hidden>Bağlantıyı Kes</button></div><div class="ff-google-note">Google bağlantısı yalnızca hesap kimliğini eşleştirir; mevcut gelir, gider, transfer, borç/alacak, taksit ve yerel verilerin silinmesine veya değiştirilmesine dokunmaz.</div>`;
+    profile.appendChild(card);
+    card.querySelector("#ff-google-connect")?.addEventListener("click",connectGoogle);
+    card.querySelector("#ff-google-signout")?.addEventListener("click",disconnectGoogle);
+    render(null);
+  }
+  function render(user){
+    const card=document.getElementById(CARD_ID);if(!card)return;
+    const avatar=card.querySelector("#ff-google-avatar"),title=card.querySelector("#ff-google-title"),email=card.querySelector("#ff-google-email"),connect=card.querySelector("#ff-google-connect"),out=card.querySelector("#ff-google-signout");
+    if(user){title.textContent=user.displayName||"Google hesabı bağlı";email.textContent=user.email||"Google hesabı";avatar.innerHTML=user.photoURL?`<img src="${String(user.photoURL).replace(/"/g,"&quot;")}" alt="">`:((user.displayName||user.email||"G").trim().charAt(0).toUpperCase());connect.hidden=true;out.hidden=false;}
+    else{avatar.textContent="G";title.textContent="Google hesabı bağlı değil";email.textContent="Verilerini yerel olarak kullanmaya devam edebilirsin.";connect.hidden=false;out.hidden=true;}
+  }
+  function isMobile(){return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent||"")||window.matchMedia?.("(max-width: 700px)").matches;}
+  function errorText(error){
+    const code=error?.code||"";
+    const map={
+      "auth/unauthorized-domain":"Bu site Firebase'de yetkili değil. ibrahim-cell.github.io alan adını kontrol et.",
+      "auth/popup-blocked":"Google penceresi tarayıcı tarafından engellendi.",
+      "auth/popup-closed-by-user":"Google bağlantısı iptal edildi.",
+      "auth/cancelled-popup-request":"Google bağlantısı zaten başlatılmış.",
+      "auth/network-request-failed":"İnternet bağlantısı nedeniyle Google'a ulaşılamadı.",
+      "auth/operation-not-allowed":"Firebase'de Google giriş yöntemi etkin değil.",
+      "auth/internal-error":"Google/Firebase bağlantısında geçici bir hata oluştu.",
+      "auth/too-many-requests":"Çok fazla deneme yapıldı. Biraz sonra tekrar dene."
+    };
+    return map[code]||`Google bağlantısı kurulamadı (${code||"bilinmeyen hata"}).`;
+  }
+  async function connectGoogle(){
+    if(!auth){toast("Google bağlantısı henüz hazır değil.","error");return;}
+    const button=document.getElementById("ff-google-connect");if(button){button.disabled=true;button.textContent="Google açılıyor…";}
+    try{
+      if(persistenceReady)await persistenceReady;
+      const provider=new firebase.auth.GoogleAuthProvider();
+      provider.setCustomParameters({prompt:"select_account"});
+      if(isMobile()){
+        await auth.signInWithRedirect(provider);
+        return;
+      }
+      await auth.signInWithPopup(provider);
+      toast("Google hesabı başarıyla bağlandı.","success");
+    }catch(error){
+      console.error("[FixFinans] Google bağlantı hatası",error);
+      toast(errorText(error),"error");
+    }finally{if(button){button.disabled=false;button.textContent="G Google ile Bağlan";}}
+  }
+  async function disconnectGoogle(){
+    if(!auth)return;
+    try{await auth.signOut();clearGoogleUser();render(null);toast("Google hesabı bağlantısı kesildi.","success");}
+    catch(error){console.error("[FixFinans] Google çıkış hatası",error);toast("Google bağlantısı kesilemedi.","error");}
+  }
+  async function init(){
+    buildCard();
+    if(!window.firebase){console.warn("[FixFinans] Firebase SDK yüklenemedi.");return;}
+    try{
+      if(!firebase.apps.length)firebase.initializeApp(firebaseConfig);
+      auth=firebase.auth();
+      persistenceReady=auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(e=>console.warn("[FixFinans] Persistence ayarlanamadı",e));
+      auth.onAuthStateChanged(user=>{render(user);if(user)saveGoogleUser(user);});
+      try{const result=await auth.getRedirectResult();if(result?.user){saveGoogleUser(result.user);render(result.user);toast("Google hesabı başarıyla bağlandı.","success");}}catch(error){console.error("[FixFinans] Redirect sonucu hatası",error);if(error?.code)toast(errorText(error),"error");}
+    }catch(error){console.error("[FixFinans] Firebase başlatma hatası",error);toast("Google bağlantısı hazırlanamadı.","error");}
+  }
+  window.FixFinansGoogleAuth=Object.freeze({init,connect:connectGoogle,disconnect:disconnectGoogle});
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();
 })();
 </script>
 </body>

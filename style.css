@@ -4591,3 +4591,175 @@ body {
        gereksiz yer kapladığı için mobilde gizleniyor (işlevi korunuyor). */
     .debt-record-open{ display:none !important; }
 }
+
+/* ========================================
+   FIX FİNANS 13.3.1 — GÖRÜNÜM AYARLARI
+   Yazı boyutu + arayüz ölçeği
+======================================== */
+html[data-font-size="small"] { font-size: 14px; }
+html[data-font-size="normal"] { font-size: 16px; }
+html[data-font-size="large"] { font-size: 18px; }
+
+
+/* Doğrudan piksel kullanan temel metinleri de yazı boyutuna göre ayarla. */
+html[data-font-size="small"] .app { --ff-font-factor: 0.94; }
+html[data-font-size="normal"] .app { --ff-font-factor: 1; }
+html[data-font-size="large"] .app { --ff-font-factor: 1.08; }
+html[data-font-size="small"] .app .page-title,
+html[data-font-size="small"] .app .section-title,
+html[data-font-size="small"] .app .card-title { font-size: calc(1em * var(--ff-font-factor, 1)); }
+html[data-font-size="large"] .app .page-title,
+html[data-font-size="large"] .app .section-title,
+html[data-font-size="large"] .app .card-title { font-size: calc(1em * var(--ff-font-factor, 1)); }
+
+/* Görünüm seçenekleri her tema ile okunabilir kalsın. */
+html[data-theme="dark"] #ff-font-size-selector .theme-option,
+html[data-theme="dark"] #ff-ui-scale-selector .theme-option { color: var(--text); background: var(--card); border-color: var(--border); }
+html[data-theme="light"] #ff-font-size-selector .theme-option,
+html[data-theme="light"] #ff-ui-scale-selector .theme-option { color: var(--text); background: var(--card); border-color: var(--border); }
+
+/* 13.3.1 Görünüm Ayarları - sağlam uygulama */
+html[data-font-size="small"] { --ff-font-zoom: .92; }
+html[data-font-size="normal"] { --ff-font-zoom: 1; }
+html[data-font-size="large"] { --ff-font-zoom: 1.08; }
+html[data-ui-scale="compact"] { --ff-ui-zoom: .94; }
+html[data-ui-scale="standard"] { --ff-ui-zoom: 1; }
+html[data-ui-scale="comfortable"] { --ff-ui-zoom: 1.06; }
+/* Ayar butonları her durumda görünür ve tıklanabilir */
+#ff-font-size-selector .theme-option, #ff-ui-scale-selector .theme-option {
+  min-height: 44px; cursor: pointer;
+}
+
+/* 13.3.1 v3 - Görünüm ayarları tek kaynaklı uygulama */
+html[data-font-size="small"] { font-size: 14px !important; }
+html[data-font-size="normal"] { font-size: 16px !important; }
+html[data-font-size="large"] { font-size: 18px !important; }
+#ff-font-size-selector .theme-option, #ff-ui-scale-selector .theme-option { min-height:44px !important; cursor:pointer !important; }
+
+/* 13.3.1 controlled appearance + theme clarity */
+.theme-selector { grid-template-columns: repeat(3,minmax(0,1fr)) !important; }
+.system-preview { background: linear-gradient(90deg,#0b1020 0 50%,#f4f7fb 50% 100%) !important; }
+:root[data-theme="dark"] .theme-option { background: rgba(255,255,255,.035); color:#eef2fa; }
+:root[data-theme="light"] .theme-option { background:#fff; color:#182033; }
+:root[data-theme="dark"] .profile-info-row strong,
+:root[data-theme="dark"] .management-row strong,
+:root[data-theme="dark"] .management-row small,
+:root[data-theme="dark"] .settings-card h2,
+:root[data-theme="dark"] .setting-info strong,
+:root[data-theme="dark"] .setting-info span { color:var(--text)!important; }
+:root[data-theme="dark"] .management-row small,
+:root[data-theme="dark"] .setting-info span { color:var(--text-secondary)!important; }
+:root[data-theme="light"] .profile-info-row strong,
+:root[data-theme="light"] .management-row strong,
+:root[data-theme="light"] .management-row small,
+:root[data-theme="light"] .settings-card h2,
+:root[data-theme="light"] .setting-info strong { color:#182033!important; }
+.ff-profile-edit-inline { width:100%; margin-top:10px; }
+.ff-management-actions { display:flex; align-items:center; gap:5px; margin-left:auto; }
+.ff-management-actions button { width:30px;height:30px;border-radius:9px;border:1px solid var(--border);background:var(--card-secondary);color:var(--text);cursor:pointer;font-size:.78rem; }
+.ff-category-toolbar { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 10px; }
+.ff-category-toolbar button { border:1px solid var(--border);background:var(--card-secondary);color:var(--text);border-radius:9px;padding:7px 9px;font-size:.58rem;cursor:pointer; }
+.ff-category-toolbar button.active { border-color:var(--primary); box-shadow:0 0 0 1px rgba(0,168,255,.14); }
+@media(max-width:520px){ .theme-selector{grid-template-columns:1fr!important;} .theme-selector .theme-option{min-height:52px;} }
+
+/* 13.3.2 notification history */
+.fix-notification-item.is-new{border-color:rgba(111,76,255,.24);background:rgba(111,76,255,.08)}
+.fix-notification-item strong{display:block;color:#eef2fa;font-size:.68rem;font-weight:800}
+.header-notification-badge{min-width:15px;width:auto;height:15px;padding:0 4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;line-height:15px}
+
+/* 13.3.2 — Tüm ikincil ekranlarda İşlemler sayfasıyla aynı geri ok */
+.page-back-button{
+  position:absolute;top:0;left:0;width:42px;height:42px;border-radius:14px;
+  display:grid;place-items:center;background:rgba(14,21,39,.82);
+  border:1px solid rgba(255,255,255,.07);color:#e7ebf7;
+  box-shadow:0 12px 28px rgba(0,0,0,.18);cursor:pointer;z-index:2;
+  font-size:2rem;line-height:1;font-weight:300;padding:0 0 4px;font-family:inherit;
+  transition:transform .16s ease,background .16s ease;
+}
+.page-back-button:hover{background:rgba(255,255,255,.08);transform:translateY(-1px)}
+.analytics-page,.profile-page,.settings-page,.debt-receivable-page{position:relative}
+.analytics-page>.page-header,.profile-page>.page-header,.settings-page>.page-header,.debt-receivable-page>.page-header{padding-left:54px}
+@media(max-width:430px){.page-back-button{top:0;left:0}.analytics-page>.page-header,.profile-page>.page-header,.settings-page>.page-header,.debt-receivable-page>.page-header{padding-left:54px}}
+
+
+<style id="fix-finans-responsive-device-header">
+/* 13.3.2 — RESPONSIVE DEVICE HEADER
+   Samsung / iPhone / farklı ekran oranlarında üst alanı kompakt tutar. */
+@media (max-width: 767px) {
+  .app {
+    width: 100%;
+    max-width: 620px;
+    padding: clamp(6px, 1.6vh, 12px) 12px calc(112px + env(safe-area-inset-bottom));
+  }
+
+  .app-header {
+    position: relative;
+    top: auto;
+    gap: 8px;
+    min-height: 38px;
+    margin-bottom: 10px;
+    padding: 2px 0 7px;
+    background: transparent;
+    border-bottom: 0;
+  }
+
+  .premium-home-brand { gap: 7px; }
+  .home-menu-button {
+    flex: 0 0 34px !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    border-radius: 10px;
+  }
+  .home-menu-button .header-icon { width: 15px; height: 15px; }
+
+  .header-welcome { gap: 0; }
+  .header-eyebrow { font-size: .52rem !important; line-height: 1.1; }
+  .header-welcome h1 {
+    font-size: .86rem !important;
+    line-height: 1.12;
+    margin: 1px 0 0;
+  }
+  .header-subtitle {
+    font-size: .48rem !important;
+    line-height: 1.1;
+    margin-top: 1px;
+  }
+
+  .fix-header-actions {
+    gap: 3px !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+  }
+  .fix-header-actions .header-button {
+    width: 30px !important;
+    height: 30px !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+    max-width: 30px !important;
+    flex: 0 0 30px !important;
+    border-radius: 9px;
+  }
+  .fix-header-actions .header-icon { width: 14px !important; height: 14px !important; }
+
+  .balance-section { margin-top: 0; }
+}
+
+@media (max-width: 380px) {
+  .app { padding-left: 10px; padding-right: 10px; }
+  .app-header { gap: 5px; margin-bottom: 8px; padding-bottom: 5px; }
+  .home-menu-button {
+    flex-basis: 32px !important; width: 32px !important; height: 32px !important;
+    min-width: 32px !important; min-height: 32px !important; max-width: 32px !important;
+  }
+  .header-welcome h1 { font-size: .8rem !important; }
+  .header-eyebrow { font-size: .48rem !important; }
+  .header-subtitle { display: none; }
+  .fix-header-actions .header-button {
+    width: 28px !important; height: 28px !important;
+    min-width: 28px !important; min-height: 28px !important; max-width: 28px !important;
+    flex-basis: 28px !important;
+  }
+}
+</style>
